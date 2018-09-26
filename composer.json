@@ -1,0 +1,22 @@
+{
+    "name": "lokalnie/bootstrap",
+    "description": "zaleznosci bootstrapa",
+    "require": {
+        "twbs/bootstrap": "^4.1",
+        "components/jquery": "^3.3",
+        "heimrichhannot/popper.js": "^1.12",
+        "smarty/smarty": "^3.1"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cp -a /var/www/html/composer/vendor/twbs/bootstrap/dist/js/bootstrap.min.js /var/www/html/composer/public/js/",
+            "cp -a /var/www/html/composer/vendor/twbs/bootstrap/dist/js/bootstrap.min.js.map /var/www/html/composer/public/js/",
+            "cp -a /var/www/html/composer/vendor/twbs/bootstrap/dist/css/bootstrap.min.css /var/www/html/composer/public/css/",
+            "cp -a /var/www/html/composer/vendor/twbs/bootstrap/dist/css/bootstrap.min.css.map /var/www/html/composer/public/css/",
+            "cp -a /var/www/html/composer/vendor/components/jquery/jquery.min.js /var/www/html/composer/public/js/",
+            "cp -a /var/www/html/composer/vendor/components/jquery/jquery.min.map /var/www/html/composer/public/js/",
+            "cp -a /var/www/html/composer/vendor/twbs/bootstrap/js/dist/popover.js /var/www/html/composer/public/js/",
+            "cp -a /var/www/html/composer/vendor/twbs/bootstrap/js/dist/popover.js.map /var/www/html/composer/public/js/"
+        ]
+    }
+}
