@@ -1,4 +1,27 @@
-<div class="col-md-9 col-lg-9">
+<?php
+/* Smarty version 3.1.33, created on 2018-09-28 12:27:54
+  from '/var/www/html/blog-v2/private/templates/create_user.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5bae022a64c1c8_39011248',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '8ff75465fa8907cf35fc654ddf6eb08b92039179' => 
+    array (
+      0 => '/var/www/html/blog-v2/private/templates/create_user.tpl',
+      1 => 1538130383,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5bae022a64c1c8_39011248 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-9 col-lg-9">
     <form action="/create_user" id="CreateUser" method="POST">
         <div class="row">
             <div class="col-md-8 col-lg-8">
@@ -50,7 +73,10 @@
             </div>
         </div>
     </form>
-    {if isset($formNotFilled)}
-        {$formNotFilled}
-    {/if}
+    <?php if (isset($_smarty_tpl->tpl_vars['formNotFilled']->value)) {?>
+        <?php echo $_smarty_tpl->tpl_vars['formNotFilled']->value;?>
+
+    <?php }?>
 </div>
+<?php }
+}

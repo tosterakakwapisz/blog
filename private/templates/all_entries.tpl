@@ -11,17 +11,22 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col text-left">
-                                <small class="text-muted text-left">Autor: {$r.n_AuthorNickname}</small>
-                                {* ZROBIC SKRYPT DO EDYCJI WPISU *}
-                                <small class="text-left ml-4">
+                                <div class="row">
+                                    <div class="col-md-2 pt-1">
+                                        <small class="text-muted text-left">Autor: {$r.n_AuthorNickname}</small>
+                                    </div>
                                     {if isset($user_Type) && $user_Type <= 2}
-                                        <a href="edit_entry_i/{$r.nId}">Edytuj</a>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-outline-primary" href="edit_entry_i/{$r.nId}">Edytuj</button>
+                                    </div>
+                                    <div class="offset-md-3 col-md-2">
+                                        <a class="delete_entry btn btn-outline-primary" id="{$r.nId}">Usun</a>
+                                    </div>
                                     {/if}
-                                </small>
-
-                            </div>
-                            <div class="col text-right">
-                                <small class="text-muted text-right">Data dodania: {$r.n_Date}</small>
+                                    <div class="col-md-3 pt-1 text-right">
+                                        <small class="text-muted text-right">Data dodania: {$r.n_Date}</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

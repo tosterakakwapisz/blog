@@ -43,7 +43,7 @@
                                         <a href="edit_user_i/{$r.uId}">Edytuj</a>
                                     </div>
                                     <div class="col-md-6 text-right">
-                                            <a href="delete_user/{$r.uId}">Usuń</a>
+                                        <a class="delete_user btn btn-outline-primary" id="{$r.uId}">Usuń</a>
                                     </div>
                                 </div>
                             </div>

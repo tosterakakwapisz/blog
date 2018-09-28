@@ -1,4 +1,4 @@
-<div class="col-md-2 col-lg-2">
+<div class="col-md-3 col-lg-3">
     <div class="list-group">
         <a href="/" class="list-group-item list-group-item-action list-group-item-primary">Strona główna</a>
         <a href="/entries" class="list-group-item list-group-item-action">Wszystkie wpisy {* ZROBIC DROPDOWN MENU*}</a>
@@ -9,6 +9,6 @@
                 <a href="/users" class="list-group-item list-group-item-action">Uzytkownicy</a>
             {/if}
         {/if}
-        <a href="/logout" class="list-group-item list-group-item-action list-group-item-secondary">Log out</a>
+        <a href="/logout" onClick="" class="list-group-item list-group-item-action list-group-item-secondary">Log out</a>
     </div>
 </div>

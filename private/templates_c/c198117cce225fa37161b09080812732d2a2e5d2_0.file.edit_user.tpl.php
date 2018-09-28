@@ -1,5 +1,29 @@
-<div class="col-md-9 col-lg-9">
-    <form action="/edit_user/{$su_r.uId}" id="EditUser" method="POST">
+<?php
+/* Smarty version 3.1.33, created on 2018-09-28 10:44:13
+  from '/var/www/html/blog-v2/private/templates/edit_user.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5bade9ddb435e4_71071210',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'c198117cce225fa37161b09080812732d2a2e5d2' => 
+    array (
+      0 => '/var/www/html/blog-v2/private/templates/edit_user.tpl',
+      1 => 1538124236,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5bade9ddb435e4_71071210 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-10 col-lg-10">
+    <form action="/edit_user/<?php echo $_smarty_tpl->tpl_vars['su_r']->value['uId'];?>
+" id="EditUser" method="POST">
         <div class="row">
             <div class="col-md-9 col-sm-9 pb-2">
                 <h4>Edycja uzytkownika</h4>
@@ -8,11 +32,13 @@
         <div class="row">
             <div class="col-md-4 col-sm-4 text-left pb-2">
                 <label for="EditUNickname"><strong>Nickname: </strong></label>
-                <input type="text" class="form-control" id="EditUNickname" name="edit_u_nickname" required value="{$su_r.u_Nickname}"/>
+                <input type="text" class="form-control" id="EditUNickname" name="edit_u_nickname" required value="<?php echo $_smarty_tpl->tpl_vars['su_r']->value['u_Nickname'];?>
+"/>
             </div>
             <div class="col-md-4 col-sm-4 text-left pb-2">
                 <label for="EditULogin"><strong>Login: </strong></label>
-                <input class="form-control" id="EditULogin" name="edit_u_login" required value="{$su_r.u_Login}"/>
+                <input class="form-control" id="EditULogin" name="edit_u_login" required value="<?php echo $_smarty_tpl->tpl_vars['su_r']->value['u_Login'];?>
+"/>
             </div>
             <div class="col-md-4 col-sm-4 text-left pb-2">
                 <label for="EditUPasswd"><strong>Password: </strong></label>
@@ -45,3 +71,5 @@
         </div>
     </form>
 </div>
+<?php }
+}
