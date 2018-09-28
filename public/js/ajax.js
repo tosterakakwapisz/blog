@@ -78,7 +78,6 @@ $(function() {
         var new_u_login = $("#NewULogin").val();
         var new_u_passwd = $("#NewUPassword").val();
         var user_type = $(".user_type:checked").val();
-        console.log(user_type);
         $.ajax({
             type: 'POST',
             url: "/create_user",
