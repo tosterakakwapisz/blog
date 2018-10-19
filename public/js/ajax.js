@@ -36,6 +36,10 @@ function mainPage()
         url: "/root"
     }).done(function(data) {
         $(".jscontent").html(data);
+
+        $(".mojemenu").removeClass("active list-group-item-primary");
+        $("#mainpagenav").addClass("active");
+
         console.log("strona glowna");
     }).fail(function(e) {
         console.log(e);
@@ -50,6 +54,8 @@ function allEntries(e)
         $(".jscontent").html(data);
         $(".jseditentry").click(editEntryInterface);
         $(".jsdeleteentry").click(deleteEntry);
+        $(".mojemenu").removeClass("active list-group-item-primary");
+        $("#allentriesnav").addClass("active");
         console.log("wszystkie wpisy");
     }).fail(function(e) {
         console.log(e);
@@ -115,6 +121,10 @@ function createEntryInterface(e)
     }).done(function(data) {
         $(".jscontent").html(data);
         $("#NewEntry").submit(createEntryQuery);
+
+        $(".mojemenu").removeClass("active list-group-item-primary");
+        $("#createentryinterface").addClass("active");
+
         console.log("interfejs tworzenia wpisu");
     }).fail(function(e) {
         console.log(e);
@@ -149,6 +159,10 @@ function createUserInterface(e)
     }).done(function(data) {
         $(".jscontent").html(data);
         $("#CreateUser").submit(createUserQuery);
+
+        $(".mojemenu").removeClass("active list-group-item-primary");
+        $("#createuserinterface").addClass("active");
+
         console.log("interfejs tworzenia uzytkownika");
     }).fail(function(e) {
         console.log(e);
@@ -188,6 +202,10 @@ function allUsers()
         $(".jscontent").html(data);
         $(".jsedituser").click(editUserInterface);
         $(".jsdeleteuser").click(deleteUser);
+
+        $(".mojemenu").removeClass("active list-group-item-primary");
+        $("#displayusers").addClass("active");
+
         console.log("all users");
     }).fail(function(e) {
         console.log(e);

@@ -1,0 +1,13 @@
+.pointer{
+    cursor: pointer !important;
+}
+
+.wyrownanie{
+    text-align: right;
+}
+
+@media only screen and (max-width: 576px) {
+    .wyrownanie{
+        text-align: left !important;
+    }
+}
