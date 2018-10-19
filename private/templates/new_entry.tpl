@@ -1,4 +1,4 @@
-<div class="col-md-9 col-lg-9">
+<div class="col-md-9 col-lg-9 jscontent">
     <form action="./create_entry" id="NewEntry" method="POST">
         <div class="row">
             <div class="col-md-2 col-lg-2 text-left">
@@ -30,5 +30,4 @@
     {if isset($noTitleOrContent)}
         {$noTitleOrContent}
     {/if}
-
 </div>

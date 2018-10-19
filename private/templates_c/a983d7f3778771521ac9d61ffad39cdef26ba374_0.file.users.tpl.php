@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-28 15:32:51
+/* Smarty version 3.1.33, created on 2018-10-18 15:51:56
   from '/var/www/html/blog-v2/private/templates/users.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bae2d83d9c863_86093362',
+  'unifunc' => 'content_5bc88ffce3e084_43535697',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a983d7f3778771521ac9d61ffad39cdef26ba374' => 
     array (
       0 => '/var/www/html/blog-v2/private/templates/users.tpl',
-      1 => 1538141487,
+      1 => 1539870702,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bae2d83d9c863_86093362 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="col-md-9 col-lg-9">
-    <div class="row pb-3">
+function content_5bc88ffce3e084_43535697 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-12 col-lg-12 jscontent px-0">
+    <?php $_smarty_tpl->_assignInScope('n', 0);?>
+    <div class="row pb-3 js_entry">
         <?php if (isset($_smarty_tpl->tpl_vars['user_Type']->value) && $_smarty_tpl->tpl_vars['user_Type']->value <= 1) {?>
             <?php if (isset($_smarty_tpl->tpl_vars['dau_r']->value)) {?>
                 <?php
@@ -30,7 +31,9 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
 ?>
-                    <div class="col-md-6 col-lg-4 col-xl-3 pb-3">
+                    <?php $_smarty_tpl->_assignInScope('n', $_smarty_tpl->tpl_vars['n']->value+1);?>
+                    <div class="col-md-3 col-lg-3 col-xl-3 pb-3 " id="<?php echo $_smarty_tpl->tpl_vars['n']->value;?>
+">
                         <div class="card">
                             <div class="card-header">
                                 <div class="row">
@@ -70,12 +73,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-6 text-left">
-                                        <a href="edit_user_i/<?php echo $_smarty_tpl->tpl_vars['r']->value['uId'];?>
-">Edytuj</a>
+                                        <button data-editid="<?php echo $_smarty_tpl->tpl_vars['r']->value['uId'];?>
+" class="btn btn-outline-primary jsedituser">Edytuj</button>
                                     </div>
                                     <div class="col-md-6 text-right">
-                                        <a class="delete_user btn btn-outline-primary" id="<?php echo $_smarty_tpl->tpl_vars['r']->value['uId'];?>
-">Usuń</a>
+                                        <button data-deleteid="<?php echo $_smarty_tpl->tpl_vars['r']->value['uId'];?>
+" data-n="<?php echo $_smarty_tpl->tpl_vars['n']->value;?>
+" class="delete_user btn btn-outline-primary jsdeleteuser" id="<?php echo $_smarty_tpl->tpl_vars['r']->value['uId'];?>
+">Usuń</button>
                                     </div>
                                 </div>
                             </div>

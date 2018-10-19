@@ -22,135 +22,245 @@ $(function() {
         });
     })
 
-    $("#NewEntry").submit(function(e) {
-        e.preventDefault();
-        var news_title = $("#NewsTitle").val();
-        var news_content = $("#NewsContent").val();
-        $.ajax({
-            type: 'POST',
-            url: "/create_entry",
-            dataType: "json",
-            data: {
-                news_title: news_title,
-                news_content: news_content
-            }
-        }).done(function(response) {
-            $("#NewEntry")[0].reset();
-            window.alert("Pomyslnie dodano newsa!");
-        }).fail(function(e) {
-            console.log(e);
-            window.alert("Wystapil blad. Sprobuj jeszcze raz!");
-        });
-    })
-
-    $("#EditEntry").submit(function(e) {
-        e.preventDefault();
-        var edit_news_title = $("#EditNewsTitle").val();
-        var edit_news_content = $("#EditNewsContent").val();
-        var url = window.location.pathname;
-        var id = url.split("/");
-        $.ajax({
-            type: 'POST',
-            url: "/edit_entry/"+id[2],
-            dataType: "json",
-            data: {
-                edit_news_title: edit_news_title,
-                edit_news_content: edit_news_content
-            }
-        }).done(function(response){
-            console.log(response);
-            $("#EditNewsTitle").val('');
-            $("#EditNewsContent").val('');
-            window.alert("Pomyslnie dodano newsa!");
-        }).fail(function(e) {
-            console.log(e);
-            window.alert("Wystapil blad. Sprobuj jeszcze raz!");
-        })
-    })
-
-    $().submit(function(e) {
-        e.preventDefault
-    })
-
-    $("#CreateUser").submit(function(e) {
-        e.preventDefault();
-        var new_u_nick = $("#NewUNickname").val();
-        var new_u_login = $("#NewULogin").val();
-        var new_u_passwd = $("#NewUPassword").val();
-        var user_type = $(".user_type:checked").val();
-        $.ajax({
-            type: 'POST',
-            url: "/create_user",
-            dataType: "json",
-            data: {
-                new_u_nick: new_u_nick,
-                new_u_login: new_u_login,
-                new_u_passwd: new_u_passwd,
-                user_type: user_type
-            }
-        }).done(function(response) {
-            $("#CreateUser")[0].reset();
-            window.alert("Pomyslnie dodano uzytkownika!");
-        }).fail(function(e) {
-            console.log(e);
-        })
-    })
-
-    $("#EditUser").submit(function(e) {
-        e.preventDefault();
-        var edit_u_nickname = $("#EditUNickname").val();
-        var edit_u_login = $("#EditULogin").val();
-        var edit_u_passwd = $("#EditUPasswd").val();
-        var edit_u_type = $(".edit_u_type:checked").val();
-        var url = window.location.pathname;
-        var id = url.split("/");
-        $.ajax({
-            type: 'POST',
-            url: "/edit_user/"+id[2],
-            dataType: "json",
-            data: {
-                edit_u_nickname: edit_u_nickname,
-                edit_u_login: edit_u_login,
-                edit_u_passwd: edit_u_passwd,
-                edit_u_type: edit_u_type
-            }
-        }).done(function(response) {
-            $("#EditUNickname").val('');
-            $("#EditULogin").val('');
-            $("#EditUPasswd").val('');
-            $(".edit_u_type:checked").val(false);
-            console.log(response);
-            window.alert("Pomyslnie edytowano uzytkownika");
-        }).fail(function(e) {
-            console.log(e);
-            window.alert("Cos poszlo nie tak");
-        })
-    })
-
-    $(".delete_entry").click(function() {
-        var de = $(this).attr('id');
-        $.ajax({
-            type: 'POST',
-            url: "/delete_entry/"+de
-        }).done(function() {
-            console.log("wszystko ok");
-            location.reload();
-        }).fail(function(e) {
-            console.log(e);
-        })
-    })
-
-    $(".delete_user").click(function() {
-        var du = $(this).attr('id');
-        $.ajax({
-            type: 'POST',
-            url: "/delete_user/"+du
-        }).done(function() {
-            console.log("wszystko ok");
-            location.reload();
-        }).fail(function(e) {
-            console.log(e);
-        })
-    })
-
+    $("#mainpagenav").click(mainPage);
+    $("#allentriesnav").click(allEntries);
+    $("#createentryinterface").click(createEntryInterface);
+    $("#createuserinterface").click(createUserInterface);
+    $("#displayusers").click(allUsers);
+    $("#logout").click(logout);
 });
+
+function mainPage()
+{
+    $.ajax({
+        url: "/root"
+    }).done(function(data) {
+        $(".jscontent").html(data);
+        console.log("strona glowna");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function allEntries(e)
+{
+    $.ajax({
+        url: "/entries"
+    }).done(function(data) {
+        $(".jscontent").html(data);
+        $(".jseditentry").click(editEntryInterface);
+        $(".jsdeleteentry").click(deleteEntry);
+        console.log("wszystkie wpisy");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function editEntryInterface()
+{
+    $.ajax({
+        url: "/edit_entry_i/"+this.dataset.editid
+    }).done(function(data) {
+        console.log("interfejs edycji");
+        $(".jscontent").html(data);
+        $("#editentrybutton").click(editEntryQuery);
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function editEntryQuery(event)
+{
+    event.preventDefault();
+    var edit_news_title = $("#EditNewsTitle").val();
+    var edit_news_content = $("#EditNewsContent").val();
+    var edit_entry_id = $("#editentrybutton").data("id");
+    $.ajax({
+        type: 'POST',
+        url: "/edit_entry/"+edit_entry_id,
+        data: {
+            edit_news_title: edit_news_title,
+            edit_news_content: edit_news_content
+        }
+    }).done(function(data) {
+        window.alert("Wpis został zmieniony");
+        $(".jscontent").html(allEntries());
+        console.log("wpis zmieniony");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function deleteEntry(event)
+{
+    var delete_entry_id = this.dataset.deleteid;
+    var n = this.dataset.n;
+    $.ajax({
+        type: 'POST',
+        url: "/delete_entry/"+delete_entry_id
+    }).done(function() {
+        window.alert("Usunales wpis");
+        $("#"+n).remove();
+        console.log("usunelo wpis");
+    }).fail(function(e) {
+        console.log(e);
+        window.alert("Cos poszlo nie tak");
+    })
+}
+
+function createEntryInterface(e)
+{
+    $.ajax({
+        url: "/create_entry_i"
+    }).done(function(data) {
+        $(".jscontent").html(data);
+        $("#NewEntry").submit(createEntryQuery);
+        console.log("interfejs tworzenia wpisu");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function createEntryQuery(event)
+{
+    event.preventDefault();
+    var news_title = $("#NewsTitle").val();
+    var news_content = $("#NewsContent").val();
+    $.ajax({
+        type: 'POST',
+        url: "/create_entry",
+        data:{
+            news_title: news_title,
+            news_content: news_content
+        }
+    }).done(function() {
+        window.alert("Pomyslnie dodano wpis");
+        console.log("dodano wpis");
+        document.getElementById("NewEntry").reset();
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function createUserInterface(e)
+{
+    $.ajax({
+        url: "/create_user_i"
+    }).done(function(data) {
+        $(".jscontent").html(data);
+        $("#CreateUser").submit(createUserQuery);
+        console.log("interfejs tworzenia uzytkownika");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function createUserQuery(event)
+{
+    event.preventDefault();
+    var new_u_nick = $("#NewUNickname").val();
+    var new_u_login = $("#NewULogin").val();
+    var new_u_passwd = $("#NewUPassword").val();
+    var user_type = $(".user_type:checked").val();
+    $.ajax({
+        type: 'POST',
+        url: "/create_user",
+        data:{
+            new_u_nick: new_u_nick,
+            new_u_login: new_u_login,
+            new_u_passwd: new_u_passwd,
+            user_type: user_type
+        }
+    }).done(function() {
+        window.alert("Pomyslnie dodano uzytkownika");
+        console.log("dodano usera");
+        document.getElementById("CreateUser").reset();
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function allUsers()
+{
+    $.ajax({
+        url: "/users"
+    }).done(function(data) {
+        $(".jscontent").html(data);
+        $(".jsedituser").click(editUserInterface);
+        $(".jsdeleteuser").click(deleteUser);
+        console.log("all users");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function editUserInterface()
+{
+    $.ajax({
+        url: "/edit_user_i/"+this.dataset.editid
+    }).done(function(data) {
+        console.log("interfejs edycji");
+        $(".jscontent").html(data);
+        $("#edituserbutton").click(editUserQuery);
+    }).fail(function(e) {
+        console.log(e);
+    })
+}
+
+function editUserQuery(event)
+{
+    event.preventDefault();
+    var edit_u_nickname = $("#EditUNickname").val();
+    var edit_u_login = $("#EditULogin").val();
+    var edit_u_passwd = $("#EditUPasswd").val();
+    var edit_u_type = $(".u_type:checked").val();
+    var edit_user_id = $("#edituserbutton").data("edituserid");
+    $.ajax({
+        type: 'POST',
+        url: "/edit_user/"+edit_user_id,
+        data: {
+            edit_u_nickname: edit_u_nickname,
+            edit_u_login: edit_u_login,
+            edit_u_passwd: edit_u_passwd,
+            edit_u_type: edit_u_type
+        }
+    }).done(function(data) {
+        window.alert("Uzytkownik został zmieniony");
+        $(".jscontent").html(allUsers());
+        console.log("user zmieniony");
+    }).fail(function(data) {
+        console.log(data);
+        console.log("wystapil blad");
+    })
+}
+
+function deleteUser()
+{
+    var delete_user_id = this.dataset.deleteid;
+    var a = this.dataset.n;
+    console.log(a);
+    $.ajax({
+        type: 'POST',
+        url: "/delete_user/"+delete_user_id
+    }).done(function() {
+        window.alert("Usunales usera o id: "+a);
+        $("#"+a).remove();
+        console.log("user deleted");
+    }).fail(function(e) {
+        console.log(e);
+        console.log("cos poszlo nie tak");
+    })
+}
+
+function logout()
+{
+    $.ajax({
+        url: "/logout"
+    }).done(function() {
+        $("body").empty();
+        $("body").load("/logout");
+        console.log("done");
+    }).fail(function(e) {
+        console.log(e);
+    })
+}

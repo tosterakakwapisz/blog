@@ -1,4 +1,4 @@
-<div class="col-md-9 col-lg-9">
+<div class="col-md-9 col-lg-9 jscontent">
     <form action="/edit_user/{$su_r.uId}" id="EditUser" method="POST">
         <div class="row">
             <div class="col-md-9 col-sm-9 pb-2">
@@ -16,29 +16,29 @@
             </div>
             <div class="col-md-4 col-sm-4 text-left pb-2">
                 <label for="EditUPasswd"><strong>Password: </strong></label>
-                <input type="password"class="form-control" id="EditUPasswd" name="edit_u_passwd"/>
+                <input type="password" class="form-control" id="EditUPasswd" name="edit_u_passwd"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-5 col-lg-5 text-left pb-2">
                 <h5>Typ uzytkownika</h5>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input edit_u_type" type="radio" name="edit_u_type" id="UserType1" value="1" required>
+                    <input class="form-check-input u_type" type="radio" name="edit_u_type" id="UserType1" value="1" required>
                     <label class="form-check-label" for="UserType1"> Admin </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input edit_u_type" type="radio" name="edit_u_type" id="UserType2" value="2" required>
+                    <input class="form-check-input u_type" type="radio" name="edit_u_type" id="UserType2" value="2" required>
                     <label class="form-check-label" for="UserType2"> Moderator </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input edit_u_type" type="radio" name="edit_u_type" id="UserType3" value="3" required>
+                    <input class="form-check-input u_type" type="radio" name="edit_u_type" id="UserType3" value="3" required>
                     <label class="form-check-label" for="UserType3"> Dziennikarz </label>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 text-left py-2">
-                <button type="submit" class="btn">Zapisz zmiany</button>
+                <button type="submit" data-edituserid="{$su_r.uId}" id="edituserbutton" class="btn">Zapisz zmiany</button>
                 <button type="reset" class="btn">Resetuj</button>
                 <a href="/users" class="text-middle px-3">Anuluj</a>
             </div>

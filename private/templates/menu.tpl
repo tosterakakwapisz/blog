@@ -1,14 +1,14 @@
-<div class="col-md-3 col-lg-3">
+<div class="col-md-2 col-sm-2">
     <div class="list-group">
-        <a href="/" class="list-group-item list-group-item-action list-group-item-primary">Strona główna</a>
-        <a href="/entries" class="list-group-item list-group-item-action">Wszystkie wpisy {* ZROBIC DROPDOWN MENU*}</a>
+        <button id="mainpagenav" class="list-group-item list-group-item-action list-group-item-primary btn btn-outline-primary">Strona główna</button>
+        <button id="allentriesnav" class="list-group-item list-group-item-action btn ">Wpisy</button>
         {if (isset($user_Type) && ($user_Type <= 2))}
-            <a href="/create_entry_i" class="list-group-item list-group-item-action">Utwórz wpis</a>
+            <button id="createentryinterface" class="list-group-item list-group-item-action btn">Utwórz wpis</button>
             {if isset($user_Type) && $user_Type == 1}
-                <a href="/create_user_i" class="list-group-item list-group-item-action">Stworz uzytkownika</a>
-                <a href="/users" class="list-group-item list-group-item-action">Uzytkownicy</a>
+                <button id="createuserinterface" class="list-group-item list-group-item-action btn">Stworz usera</button>
+                <button id="displayusers" class="list-group-item list-group-item-action btn">Uzytkownicy</button>
             {/if}
         {/if}
-        <a href="/logout" onClick="" class="list-group-item list-group-item-action list-group-item-secondary">Log out</a>
+        <button id="logout" class="list-group-item list-group-item-action list-group-item-secondary btn">Log out</button>
     </div>
 </div>

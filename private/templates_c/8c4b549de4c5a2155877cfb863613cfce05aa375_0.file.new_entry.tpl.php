@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-27 14:35:37
+/* Smarty version 3.1.33, created on 2018-10-17 14:25:28
   from '/var/www/html/blog-v2/private/templates/new_entry.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bacce99347be0_96820820',
+  'unifunc' => 'content_5bc72a382a1bf3_25894740',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8c4b549de4c5a2155877cfb863613cfce05aa375' => 
     array (
       0 => '/var/www/html/blog-v2/private/templates/new_entry.tpl',
-      1 => 1538051181,
+      1 => 1539778197,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bacce99347be0_96820820 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="col-md-9 col-lg-9">
+function content_5bc72a382a1bf3_25894740 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-9 col-lg-9 jscontent">
     <form action="./create_entry" id="NewEntry" method="POST">
         <div class="row">
             <div class="col-md-2 col-lg-2 text-left">
@@ -54,7 +54,6 @@ function content_5bacce99347be0_96820820 (Smarty_Internal_Template $_smarty_tpl)
         <?php echo $_smarty_tpl->tpl_vars['noTitleOrContent']->value;?>
 
     <?php }?>
-
 </div>
 <?php }
 }

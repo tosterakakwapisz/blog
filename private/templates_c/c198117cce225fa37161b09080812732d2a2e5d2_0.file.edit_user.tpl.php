@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-28 10:44:13
+/* Smarty version 3.1.33, created on 2018-10-18 15:52:39
   from '/var/www/html/blog-v2/private/templates/edit_user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bade9ddb435e4_71071210',
+  'unifunc' => 'content_5bc89027a6c0e0_07319872',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c198117cce225fa37161b09080812732d2a2e5d2' => 
     array (
       0 => '/var/www/html/blog-v2/private/templates/edit_user.tpl',
-      1 => 1538124236,
+      1 => 1539869364,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bade9ddb435e4_71071210 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="col-md-10 col-lg-10">
+function content_5bc89027a6c0e0_07319872 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-9 col-lg-9 jscontent">
     <form action="/edit_user/<?php echo $_smarty_tpl->tpl_vars['su_r']->value['uId'];?>
 " id="EditUser" method="POST">
         <div class="row">
@@ -42,29 +42,30 @@ function content_5bade9ddb435e4_71071210 (Smarty_Internal_Template $_smarty_tpl)
             </div>
             <div class="col-md-4 col-sm-4 text-left pb-2">
                 <label for="EditUPasswd"><strong>Password: </strong></label>
-                <input type="password"class="form-control" id="EditUPasswd" name="edit_u_passwd"/>
+                <input type="password" class="form-control" id="EditUPasswd" name="edit_u_passwd"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-5 col-lg-5 text-left pb-2">
                 <h5>Typ uzytkownika</h5>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input edit_u_type" type="radio" name="edit_u_type" id="UserType1" value="1" required>
+                    <input class="form-check-input u_type" type="radio" name="edit_u_type" id="UserType1" value="1" required>
                     <label class="form-check-label" for="UserType1"> Admin </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input edit_u_type" type="radio" name="edit_u_type" id="UserType2" value="2" required>
+                    <input class="form-check-input u_type" type="radio" name="edit_u_type" id="UserType2" value="2" required>
                     <label class="form-check-label" for="UserType2"> Moderator </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input edit_u_type" type="radio" name="edit_u_type" id="UserType3" value="3" required>
+                    <input class="form-check-input u_type" type="radio" name="edit_u_type" id="UserType3" value="3" required>
                     <label class="form-check-label" for="UserType3"> Dziennikarz </label>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 text-left py-2">
-                <button type="submit" class="btn">Zapisz zmiany</button>
+                <button type="submit" data-edituserid="<?php echo $_smarty_tpl->tpl_vars['su_r']->value['uId'];?>
+" id="edituserbutton" class="btn">Zapisz zmiany</button>
                 <button type="reset" class="btn">Resetuj</button>
                 <a href="/users" class="text-middle px-3">Anuluj</a>
             </div>

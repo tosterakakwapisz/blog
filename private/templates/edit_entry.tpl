@@ -1,5 +1,5 @@
-<div class="col-md-9 col-lg-9">
-    <form action="/edit_entry/{$se_r.nId}" id="EditEntry" method="POST">
+<div class="col-md-9 col-lg-9 jscontent">
+    <form action="/edit_entry/{$se_r.nId}" id="editentry" data-formid="{$se_r.nId}" method="POST">
         <div class="row">
             <div class="col-md-2 col-lg-2 text-left">
                 <label for="EditNewsTitle">Tytul newsa</label>
@@ -22,7 +22,8 @@
         </div>
         <div class="row">
             <div class="col-md-2 col-lg-2">
-                <button type="submit" class="btn mb-2 ml-2">Zapisz newsa</button>
+                <button data-id="{$se_r.nId}" id="editentrybutton" class="btn mb-2 ml-2 jseditentryquery">Zapisz newsa</button>
+                <!-- <button id="editentryquery" data-buttonid="{$se_r.nId}" type="submit" class="btn mb-2 ml-2">Zapisz newsa</button> -->
                 <a href="/entries" class="text-middle pl-3">Anuluj</a>
             </div>
         </div>

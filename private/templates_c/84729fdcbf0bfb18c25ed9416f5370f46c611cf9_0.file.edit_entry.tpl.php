@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-09-28 09:00:10
+/* Smarty version 3.1.33, created on 2018-10-18 10:08:12
   from '/var/www/html/blog-v2/private/templates/edit_entry.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5badd17ad30b55_53577540',
+  'unifunc' => 'content_5bc83f6c03f185_14519173',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '84729fdcbf0bfb18c25ed9416f5370f46c611cf9' => 
     array (
       0 => '/var/www/html/blog-v2/private/templates/edit_entry.tpl',
-      1 => 1538118007,
+      1 => 1539850048,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5badd17ad30b55_53577540 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="col-md-9 col-lg-9">
+function content_5bc83f6c03f185_14519173 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-9 col-lg-9 jscontent">
     <form action="/edit_entry/<?php echo $_smarty_tpl->tpl_vars['se_r']->value['nId'];?>
-" id="EditEntry" method="POST">
+" id="editentry" data-formid="<?php echo $_smarty_tpl->tpl_vars['se_r']->value['nId'];?>
+" method="POST">
         <div class="row">
             <div class="col-md-2 col-lg-2 text-left">
                 <label for="EditNewsTitle">Tytul newsa</label>
@@ -48,7 +49,10 @@ function content_5badd17ad30b55_53577540 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <div class="row">
             <div class="col-md-2 col-lg-2">
-                <button type="submit" class="btn mb-2 ml-2">Zapisz newsa</button>
+                <button data-id="<?php echo $_smarty_tpl->tpl_vars['se_r']->value['nId'];?>
+" id="editentrybutton" class="btn mb-2 ml-2 jseditentryquery">Zapisz newsa</button>
+                <!-- <button id="editentryquery" data-buttonid="<?php echo $_smarty_tpl->tpl_vars['se_r']->value['nId'];?>
+" type="submit" class="btn mb-2 ml-2">Zapisz newsa</button> -->
                 <a href="/entries" class="text-middle pl-3">Anuluj</a>
             </div>
         </div>

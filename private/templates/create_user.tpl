@@ -1,4 +1,4 @@
-<div class="col-md-9 col-lg-9">
+<div class="col-md-9 col-lg-9 jscontent">
     <form action="/create_user" id="CreateUser" method="POST">
         <div class="row">
             <div class="col-md-8 col-lg-8">
@@ -7,8 +7,10 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-lg-8 text-left">
-                <strong><label for="NewUNickname">Nickname:</label></strong>
-                <small id="NewUNicknameDescription" class="form-text text-muted">(wyswietlana nazwa uzytkownika jako autor wpisu)</small>
+                <label for="NewUNickname">
+                    <strong>Nickname:</strong>
+                    <small id="NewUNicknameDescription" class="form-text text-muted">(wyswietlana nazwa uzytkownika jako autor wpisu)</small>
+                </label>
                 <input type="text" class="form-control" id="NewUNickname" name="new_u_nick" required autofocus />
             </div>
         </div>
@@ -46,7 +48,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-3 text-left">
                 <button type="submit" class="btn mr-2">Utworz uzytkownika</button>
-                <a href="/" class="text-center">Anuluj</a>
+                <button class="btn text-center">Anuluj</button>
             </div>
         </div>
     </form>

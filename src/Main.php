@@ -87,14 +87,19 @@ class Main
         if ($this->uri[1] == "") {
             $this->smarty->assign("user_Type", $_SESSION['user_type']);
             $this->content = $this->smarty->fetch("main_page.tpl");
-        } elseif ($this->uri[1] == "entries") {
+        } elseif ($this->uri[1] == "root") {
+            $this->smarty->assign("user_Type", $_SESSION['user_type']);
+            $this->content = $this->smarty->display("main_page.tpl");
+            exit();
+        } elseif ($this->uri[1] == "entries" ) {
             if (isset($_SESSION['user_type'])) {
                 $this->displayAllEntries();
             }
         } elseif ($this->uri[1] == "create_entry_i") {
             if (isset($_SESSION['user_type'])) {
                 $this->smarty->assign("user_Type", $_SESSION['user_type']);
-                $this->content = $this->smarty->fetch("new_entry.tpl");
+                $this->content = $this->smarty->display("new_entry.tpl");
+                exit();
             }
         } elseif ($this->uri[1] == "create_entry") {
             if (isset($_SESSION['user_type'])) {
@@ -107,6 +112,7 @@ class Main
         } elseif ($this->uri[1] == "edit_entry") {
             if ($_SESSION['user_type'] <= 2) {
                 $this->editEntryQuery();
+                $this->displayAllEntries();
             }
         } elseif ($this->uri[1] == "delete_entry") {
             if ($_SESSION['user_type'] <= 2) {
@@ -115,7 +121,8 @@ class Main
         } elseif ($this->uri[1] == "create_user_i") {
             if ($_SESSION['user_type'] <= 1) {
                 $this->smarty->assign("user_Type", $_SESSION['user_type']);
-                $this->content = $this->smarty->fetch("create_user.tpl");
+                $this->content = $this->smarty->display("create_user.tpl");
+                exit();
             }
         } elseif ($this->uri[1] == "create_user") {
             if ($_SESSION['user_type'] <= 1) {
@@ -132,6 +139,7 @@ class Main
         } elseif ($this->uri[1] == "edit_user") {
             if ($_SESSION['user_type'] <= 1) {
                 $this->editUserQuery();
+                $this->displayAllUsers();
             }
         } elseif ($this->uri[1] == "delete_user") {
             if ($_SESSION['user_type'] <= 1) {
@@ -184,25 +192,20 @@ class Main
         $dae->execute();
         $dae_r = $dae->fetchAll();
         $this->smarty->assign("dae_r", $dae_r);
-        $this->content = $this->smarty->fetch("all_entries.tpl");
+        $this->content = $this->smarty->display("all_entries.tpl");
+        exit();
     }
 
     public function createEntry()
     {
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
         if (isset($_POST['news_title']) && isset($_POST['news_content'])) {
-            $news_title = $_POST['news_title'];
-            $news_content = $_POST['news_content'];
-            $nickname = $_SESSION['nickname'];
             $ce = $this->dbh->prepare("INSERT INTO News (nId, n_Title, n_Content, n_AuthorNickname, n_Date) VALUES (NULL, :Title, :Content, :Nick, NOW());");
-            $ce->bindValue(":Title", $news_title);
-            $ce->bindValue(":Content", $news_content);
-            $ce->bindValue(":Nick", $nickname);
+            $ce->bindValue(":Title", $_POST['news_title']);
+            $ce->bindValue(":Content", $_POST['news_content']);
+            $ce->bindValue(":Nick", $_SESSION['nickname']);
             $ce->execute();
-            $this->smarty->assign("creation_success", true);
-            $something = true;
-            header('Content-Type: application/json; charset=utf8');
-            echo json_encode($something);
+            $this->content = $this->smarty->display("new_entry.tpl");
             exit();
         } elseif (!isset($_POST['news_title']) || !isset($_POST['news_content'])) {
             $this->smarty->assign("noTitleOrContent", "Wprowadź poprawnie tytuł lub zawartość newsa");
@@ -218,7 +221,8 @@ class Main
         $se->execute();
         $se_r = $se->fetchAll();
         $this->smarty->assign("se_r", $se_r[0]);
-        $this->content = $this->smarty->fetch("edit_entry.tpl");
+        $this->content = $this->smarty->display("edit_entry.tpl");
+        exit();
     }
 
     public function editEntryQuery()
@@ -230,9 +234,8 @@ class Main
             $ee->bindValue(":news_id", $this->uri[2]);
             $ee->execute();
             $this->smarty->assign("update_success", true);
-            $something = true;
             header('Content-Type: application/json; charset=utf8');
-            echo json_encode($something);
+            echo json_encode(true);
             exit();
         } elseif (!isset($_POST['edit_news_title']) || !isset($_POST['edit_news_content'])) {
             $this->smarty->assign("noTitleOrContent", "Wprowadź poprawnie tytuł lub zawartość newsa");
@@ -248,7 +251,6 @@ class Main
         $de = $this->dbh->prepare("DELETE FROM News WHERE nId = :news_id;");
         $de->bindValue(":news_id", $this->uri[2]);
         $de->execute();
-        //$this->content = $this->smarty->fetch("all_entries.tpl");
         $something = true;
         header('Content-Type: application/json; charset=utf8');
         echo json_encode($something);
@@ -267,11 +269,14 @@ class Main
             $cu->bindValue(":Nick", $_POST['new_u_nick']);
             $cu->bindValue(":Type", $_POST['user_type']);
             $cu->execute();
-            $this->smarty->assign("creat_user_success", true);
+            $this->content = $this->smarty->display("new_entry.tpl"); //?
+            //$this->smarty->assign("creat_user_success", true);
+            /*
             $something = true;
             header('Content-Type: application/json; charset=utf8');
             echo json_encode($something);
             exit();
+            */
         } elseif (!isset($_POST['new_u_nick']) || !isset($_POST['new_u_login']) || !isset($_POST['new_u_passwd']) || !isset($_POST['user_type'])) {
             $this->smarty->assign("formNotFilled", "Wprowadz poprawne dane uzytkownika");
         }
@@ -284,7 +289,8 @@ class Main
         $dau->execute();
         $dau_r = $dau->fetchAll();
         $this->smarty->assign("dau_r", $dau_r);
-        $this->content = $this->smarty->fetch("users.tpl");
+        $this->content = $this->smarty->display("users.tpl");
+        exit();
     }
 
     public function editUserInterface()
@@ -295,12 +301,13 @@ class Main
         $su_r = $su->fetch();
         $this->smarty->assign("su_r", $su_r);
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
-        $this->content = $this->smarty->fetch("edit_user.tpl");
+        $this->content = $this->smarty->display("edit_user.tpl");
+        exit();
     }
 
     public function editUserQuery()
     {
-        if (isset($_POST['edit_u_nickname']) && isset($_POST['edit_u_login']) && isset($_POST['edit_u_passwd'])) {
+        if (isset($_POST['edit_u_nickname']) && isset($_POST['edit_u_login']) && isset($_POST['edit_u_passwd']) && isset($_POST['edit_u_type'])) {
             $eu = $this->dbh->prepare("UPDATE Users SET u_Login = :login, u_Password = :crypted, u_Nickname = :nick , u_UserType = :type WHERE uId = :userid;");
             $password = $_POST['edit_u_passwd'];
             $crypted = $this->hashingPasswd($password);
@@ -310,10 +317,11 @@ class Main
             $eu->bindValue(":type", $_POST['edit_u_type']);
             $eu->bindValue(":userid", $this->uri[2]);
             $eu->execute();
-            $something = true;
-            header('Content-Type: application/json; charset=utf8');
-            echo json_encode($something);
-            exit();
+            $eu_r = $eu->fetch();
+            $this->smarty->assign("su_r", $eu_r);
+            //$this->smarty->assign("user_Type", $_SESSION['user_type']);
+            //$this->content = $this->smarty->display("users.tpl");
+            //exit();
         }
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
         $this->content = $this->smarty->fetch("edit_user.tpl");

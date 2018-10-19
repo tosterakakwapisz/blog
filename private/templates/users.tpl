@@ -1,9 +1,11 @@
-<div class="col-md-9 col-lg-9">
-    <div class="row pb-3">
+<div class="col-md-12 col-lg-12 jscontent px-0">
+    {assign var=n value=0}
+    <div class="row pb-3 js_entry">
         {if isset($user_Type) && $user_Type <= 1}
             {if isset($dau_r)}
                 {foreach $dau_r as $r}
-                    <div class="col-md-6 col-lg-4 col-xl-3 pb-3">
+                    {assign var=n value=$n+1}
+                    <div class="col-md-3 col-lg-3 col-xl-3 pb-3 " id="{$n}">
                         <div class="card">
                             <div class="card-header">
                                 <div class="row">
@@ -40,10 +42,10 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-6 text-left">
-                                        <a href="edit_user_i/{$r.uId}">Edytuj</a>
+                                        <button data-editid="{$r.uId}" class="btn btn-outline-primary jsedituser">Edytuj</button>
                                     </div>
                                     <div class="col-md-6 text-right">
-                                        <a class="delete_user btn btn-outline-primary" id="{$r.uId}">Usuń</a>
+                                        <button data-deleteid="{$r.uId}" data-n="{$n}" class="delete_user btn btn-outline-primary jsdeleteuser" id="{$r.uId}">Usuń</button>
                                     </div>
                                 </div>
                             </div>
