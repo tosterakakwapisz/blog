@@ -6,17 +6,10 @@
 
 
 <div class="col-md-12 col-sm-12 col-lg-12 col-12 px-0 jscontent" >
-
         {if isset($dae_r)}
         {assign var=n value=0}
-
-
-
             {foreach $dae_r as $r}
                 {assign var=n value=$n+1}
-
-
-
                     <div class="row pb-3 js_entry" id="{$n}">
                         <div class="col">
                             <div class="card">
@@ -24,11 +17,9 @@
                                     <h4 class="card-title"><strong>{$r.n_Title}</strong></h4>
                                     <p class="card-text text-justify">{$r.n_Content}</p>
                                 </div>
-
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col text-left">
-
                                             <div class="row pb-2">
                                                 <div class="col-12 col-sm-6 pb-2 px-0">
                                                     <small class="text-muted text-left">
@@ -53,7 +44,6 @@
                                                     </small>
                                                 </div>
                                             </div>
-
                                             <div class="d-flex py-2">
                                                 {if isset($user_Type) && $user_Type <= 2}
                                                 <div class="">
@@ -64,7 +54,6 @@
                                                 </div>
                                                 {/if}
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -72,10 +61,8 @@
                             </div>
                         </div>
                     </div>
-
             {/foreach}
-    {/if}
-
+            {/if}
 </div>
 
 <!--

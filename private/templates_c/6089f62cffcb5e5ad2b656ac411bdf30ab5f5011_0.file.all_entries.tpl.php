@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-19 11:26:29
+/* Smarty version 3.1.33, created on 2018-10-19 11:41:33
   from '/var/www/html/blog/private/templates/all_entries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc9a34554e6d9_56070762',
+  'unifunc' => 'content_5bc9a6cd729394_03245634',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6089f62cffcb5e5ad2b656ac411bdf30ab5f5011' => 
     array (
       0 => '/var/www/html/blog/private/templates/all_entries.tpl',
-      1 => 1539941181,
+      1 => 1539941771,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bc9a34554e6d9_56070762 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bc9a6cd729394_03245634 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
@@ -29,21 +29,14 @@ function content_5bc9a34554e6d9_56070762 (Smarty_Internal_Template $_smarty_tpl)
 
 
 <div class="col-md-12 col-sm-12 col-lg-12 col-12 px-0 jscontent" >
-
         <?php if (isset($_smarty_tpl->tpl_vars['dae_r']->value)) {?>
         <?php $_smarty_tpl->_assignInScope('n', 0);?>
-
-
-
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['dae_r']->value, 'r');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
 ?>
                 <?php $_smarty_tpl->_assignInScope('n', $_smarty_tpl->tpl_vars['n']->value+1);?>
-
-
-
                     <div class="row pb-3 js_entry" id="<?php echo $_smarty_tpl->tpl_vars['n']->value;?>
 ">
                         <div class="col">
@@ -54,11 +47,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                                     <p class="card-text text-justify"><?php echo $_smarty_tpl->tpl_vars['r']->value['n_Content'];?>
 </p>
                                 </div>
-
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col text-left">
-
                                             <div class="row pb-2">
                                                 <div class="col-12 col-sm-6 pb-2 px-0">
                                                     <small class="text-muted text-left">
@@ -85,7 +76,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                                                     </small>
                                                 </div>
                                             </div>
-
                                             <div class="d-flex py-2">
                                                 <?php if (isset($_smarty_tpl->tpl_vars['user_Type']->value) && $_smarty_tpl->tpl_vars['user_Type']->value <= 2) {?>
                                                 <div class="">
@@ -99,7 +89,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                                                 </div>
                                                 <?php }?>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -107,13 +96,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                             </div>
                         </div>
                     </div>
-
             <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-    <?php }?>
-
+            <?php }?>
 </div>
 
 <!--

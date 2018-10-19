@@ -1,8 +1,8 @@
 $(function() {
 
-    $("#Login").submit(function(e) {
+    $("#Login").submit(function(event) {
         // Stop the browser from submitting the form.
-        e.preventDefault();
+        event.preventDefault();
         var login = $("#InputLogin").val();
         var passwd = $("#InputPassword").val();
         $.ajax({
@@ -15,7 +15,8 @@ $(function() {
             }
         }).done(function(response) {
             if (response == true) {
-                document.location.href = '/';
+                $("body").load("/");
+                //document.location.href = '/';
             } else if (response == false) {
                 $("#InvalidPasswd").html("Invalid login or password");
             }
