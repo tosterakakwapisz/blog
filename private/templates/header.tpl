@@ -11,3 +11,4 @@
     {*<link rel="shortcut icon" href="../../img/favicon.ico" />*}
 </head>
 <body class="test">
+<div id="maindiv">

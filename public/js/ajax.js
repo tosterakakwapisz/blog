@@ -1,35 +1,38 @@
 $(function() {
-
+    attachHandlers();
     $("#Login").submit(function(event) {
-        // Stop the browser from submitting the form.
         event.preventDefault();
         var login = $("#InputLogin").val();
         var passwd = $("#InputPassword").val();
         $.ajax({
             type: 'POST',
             url: "/login",
-            dataType: "json",
-            data: {
-                login: login,
-                passwd: passwd
-            }
-        }).done(function(response) {
-            if (response == true) {
-                $("body").load("/");
-                //document.location.href = '/';
-            } else if (response == false) {
+            data: $(this).serialize()
+        }).done(function(data) {
+            if (data!=="") {
+                $("#maindiv").html(data);
+                attachHandlers();
+                $("#mainpagenav").addClass("active");
+            } else {
                 $("#InvalidPasswd").html("Invalid login or password");
             }
+        }).fail(function(e) {
+            console.log(e);
         });
     })
 
+});
+attachHandlers();
+
+function attachHandlers()
+{
     $("#mainpagenav").click(mainPage);
     $("#allentriesnav").click(allEntries);
     $("#createentryinterface").click(createEntryInterface);
     $("#createuserinterface").click(createUserInterface);
     $("#displayusers").click(allUsers);
     $("#logout").click(logout);
-});
+}
 
 function mainPage()
 {
@@ -38,7 +41,7 @@ function mainPage()
     }).done(function(data) {
         $(".jscontent").html(data);
 
-        $(".mojemenu").removeClass("active list-group-item-primary");
+        $(".mojemenu").removeClass("active");
         $("#mainpagenav").addClass("active");
 
         console.log("strona glowna");
@@ -55,7 +58,7 @@ function allEntries(e)
         $(".jscontent").html(data);
         $(".jseditentry").click(editEntryInterface);
         $(".jsdeleteentry").click(deleteEntry);
-        $(".mojemenu").removeClass("active list-group-item-primary");
+        $(".mojemenu").removeClass("active");
         $("#allentriesnav").addClass("active");
         console.log("wszystkie wpisy");
     }).fail(function(e) {
@@ -123,7 +126,7 @@ function createEntryInterface(e)
         $(".jscontent").html(data);
         $("#NewEntry").submit(createEntryQuery);
 
-        $(".mojemenu").removeClass("active list-group-item-primary");
+        $(".mojemenu").removeClass("active");
         $("#createentryinterface").addClass("active");
 
         console.log("interfejs tworzenia wpisu");
@@ -161,7 +164,7 @@ function createUserInterface(e)
         $(".jscontent").html(data);
         $("#CreateUser").submit(createUserQuery);
 
-        $(".mojemenu").removeClass("active list-group-item-primary");
+        $(".mojemenu").removeClass("active");
         $("#createuserinterface").addClass("active");
 
         console.log("interfejs tworzenia uzytkownika");
@@ -204,7 +207,7 @@ function allUsers()
         $(".jsedituser").click(editUserInterface);
         $(".jsdeleteuser").click(deleteUser);
 
-        $(".mojemenu").removeClass("active list-group-item-primary");
+        $(".mojemenu").removeClass("active");
         $("#displayusers").addClass("active");
 
         console.log("all users");
@@ -275,10 +278,9 @@ function logout()
 {
     $.ajax({
         url: "/logout"
-    }).done(function() {
-        $("body").empty();
-        $("body").load("/logout");
-        console.log("done");
+    }).done(function(data) {
+        $("#maindiv").html(data);
+        console.log("wylogowano");
     }).fail(function(e) {
         console.log(e);
     })

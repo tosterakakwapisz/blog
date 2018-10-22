@@ -163,7 +163,8 @@ class Main
         $pass_check->execute();
         $pass_check_r=$pass_check->fetch();
         if ($pass_check_r > 0) {
-            $found = true;
+            $this->smarty->assign("logged", true);
+            $found[0] = true;
             if ($pass_check_r['u_UserType'] == 1) {
                 $_SESSION['user_type'] = 1;
                 $this->smarty->assign("user_Type", 1);
@@ -176,12 +177,18 @@ class Main
             }
             $_SESSION['id'] = 1;
             $_SESSION['nickname'] = $pass_check_r['u_Nickname'];
+            $content = $this->smarty->fetch("main_page.tpl");
+            $menu = $this->smarty->fetch("menu.tpl");
+            $navbar = $this->smarty->fetch("navbar.tpl");
+            $this->smarty->assign("content", $content);
+            $this->smarty->assign("menu", $menu);
+            $this->smarty->assign("navbar", $navbar);
+            $this->smarty->display("index.tpl");
+            exit();
         } else {
-            //$this->smarty->assign("validate_pass", "Invalid login or pass");
-            $found = false;
+            $found[0] = false;
+            $this->smarty->assign("logged", false);
         }
-        header('Content-Type: application/json; charset=utf8');
-        echo json_encode($found);
         exit();
     }
 
@@ -269,14 +276,7 @@ class Main
             $cu->bindValue(":Nick", $_POST['new_u_nick']);
             $cu->bindValue(":Type", $_POST['user_type']);
             $cu->execute();
-            $this->content = $this->smarty->display("new_entry.tpl"); //?
-            //$this->smarty->assign("creat_user_success", true);
-            /*
-            $something = true;
-            header('Content-Type: application/json; charset=utf8');
-            echo json_encode($something);
-            exit();
-            */
+            $this->content = $this->smarty->display("new_entry.tpl");
         } elseif (!isset($_POST['new_u_nick']) || !isset($_POST['new_u_login']) || !isset($_POST['new_u_passwd']) || !isset($_POST['user_type'])) {
             $this->smarty->assign("formNotFilled", "Wprowadz poprawne dane uzytkownika");
         }
@@ -319,9 +319,6 @@ class Main
             $eu->execute();
             $eu_r = $eu->fetch();
             $this->smarty->assign("su_r", $eu_r);
-            //$this->smarty->assign("user_Type", $_SESSION['user_type']);
-            //$this->content = $this->smarty->display("users.tpl");
-            //exit();
         }
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
         $this->content = $this->smarty->fetch("edit_user.tpl");
@@ -342,6 +339,10 @@ class Main
         unset($nick_name);
         session_unset();
         session_destroy();
-        header("Location: /");
+        $this->smarty->clearAssign(array('content','menu','navbar','logged'));
+        $this->smarty->assign("logged", false);
+        $this->smarty->assign("content", $this->smarty->fetch("login.tpl"));
+        $this->smarty->display("index.tpl");
+        exit();
     }
 }
