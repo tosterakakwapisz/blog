@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-19 08:22:11
+/* Smarty version 3.1.33, created on 2018-10-22 14:00:39
   from '/var/www/html/blog/private/templates/new_entry.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc978132f22a4_82311717',
+  'unifunc' => 'content_5bcdbbe7693945_32691148',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd60284ef14b52ab256011508ea5c59058da0ce03' => 
     array (
       0 => '/var/www/html/blog/private/templates/new_entry.tpl',
-      1 => 1539778197,
+      1 => 1540209637,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bc978132f22a4_82311717 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="col-md-9 col-lg-9 jscontent">
+function content_5bcdbbe7693945_32691148 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="col-md-12 col-lg-12 jscontent">
     <form action="./create_entry" id="NewEntry" method="POST">
         <div class="row">
             <div class="col-md-2 col-lg-2 text-left">
@@ -44,9 +44,11 @@ function content_5bc978132f22a4_82311717 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </div>
         <div class="row">
-            <div class="col-md-1 col-lg-1">
-                <button type="submit" class="btn btn-primary mb-2 ml-2">Zapisz newsa</button>
+            <div class="col-md-3 col-lg-3">
+                <button type="submit" class="btn btn-outline-primary">Zapisz</button>
+                <button id="ce_abort" class="btn btn-outline-primary">Anuluj</button>
             </div>
+            
         </div>
     </form>
 

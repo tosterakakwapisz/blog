@@ -1,4 +1,4 @@
-<div class="col-md-9 col-lg-9 jscontent">
+<div class="col-md-9 col-lg-9">
     <form action="/create_user" id="CreateUser" method="POST">
         <div class="row">
             <div class="col-md-8 col-lg-8">
@@ -31,15 +31,15 @@
         <div class="row">
             <div class="col-md-8 col-lg-8 text-left">
                 <h5>Typ uzytkownika</h5>
-                <div class="form-check form-check-inline">
+                <div class="form-check">
                     <input class="form-check-input user_type" type="radio" name="user_type" id="UserType1" value="1" required>
                     <label class="form-check-label" for="UserType1"> Admin </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check">
                     <input class="form-check-input user_type" type="radio" name="user_type" id="UserType2" value="2" required>
                     <label class="form-check-label" for="UserType2"> Moderator </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div class="form-check">
                     <input class="form-check-input user_type" type="radio" name="user_type" id="UserType3" value="3" required checked>
                     <label class="form-check-label" for="UserType3"> Dziennikarz </label>
                 </div>
@@ -47,8 +47,8 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-3 text-left">
-                <button type="submit" class="btn mr-2">Utworz uzytkownika</button>
-                <button class="btn text-center">Anuluj</button>
+                <button type="submit" class="btn btn-outline-primary m-1">Utworz uzytkownika</button>
+                <button class="btn btn-outline-primary text-center m-1" id="cu_abort">Anuluj</button>
             </div>
         </div>
     </form>

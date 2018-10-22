@@ -10,5 +10,10 @@
     <meta name="author" content="">
     {*<link rel="shortcut icon" href="../../img/favicon.ico" />*}
 </head>
-<body class="test">
-<div id="maindiv">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center text-white mx-0 p-4">
+        <a class="navbar-brand pointer">TosterBlog</a>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row pt-4" id="maindiv">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-19 09:55:05
+/* Smarty version 3.1.33, created on 2018-10-22 14:03:06
   from '/var/www/html/blog/private/templates/edit_user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bc98dd912c433_58931018',
+  'unifunc' => 'content_5bcdbc7a3b6889_31214589',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '79eaa7174a4c36f7a8d385e5519d282520cf1910' => 
     array (
       0 => '/var/www/html/blog/private/templates/edit_user.tpl',
-      1 => 1539869364,
+      1 => 1540209779,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bc98dd912c433_58931018 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bcdbc7a3b6889_31214589 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="col-md-9 col-lg-9 jscontent">
     <form action="/edit_user/<?php echo $_smarty_tpl->tpl_vars['su_r']->value['uId'];?>
 " id="EditUser" method="POST">
@@ -65,9 +65,9 @@ function content_5bc98dd912c433_58931018 (Smarty_Internal_Template $_smarty_tpl)
         <div class="row">
             <div class="col-md-4 col-sm-4 text-left py-2">
                 <button type="submit" data-edituserid="<?php echo $_smarty_tpl->tpl_vars['su_r']->value['uId'];?>
-" id="edituserbutton" class="btn">Zapisz zmiany</button>
-                <button type="reset" class="btn">Resetuj</button>
-                <a href="/users" class="text-middle px-3">Anuluj</a>
+" id="edituserbutton" class="btn btn-outline-primary">Zapisz zmiany</button>
+                <button type="reset" class="btn btn-outline-primary">Resetuj</button>
+                <button class="btn btn-outline-primary text-middle px-3" id="eu_abort">Anuluj</button>
             </div>
         </div>
     </form>

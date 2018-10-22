@@ -8,11 +8,6 @@
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
     </form>
     <div class="text-center">
-        <p id="InvalidPasswd">
-
-        </p>
-        {if isset($validate_pass)}
-            {$validate_pass}
-        {/if}
+        <p id="InvalidPasswd"></p>
     </div>
 </div>

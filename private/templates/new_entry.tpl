@@ -1,4 +1,4 @@
-<div class="col-md-9 col-lg-9 jscontent">
+<div class="col-md-12 col-lg-12 jscontent">
     <form action="./create_entry" id="NewEntry" method="POST">
         <div class="row">
             <div class="col-md-2 col-lg-2 text-left">
@@ -21,9 +21,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-1 col-lg-1">
-                <button type="submit" class="btn btn-primary mb-2 ml-2">Zapisz newsa</button>
+            <div class="col-md-3 col-lg-3">
+                <button type="submit" class="btn btn-outline-primary">Zapisz</button>
+                <button id="ce_abort" class="btn btn-outline-primary">Anuluj</button>
             </div>
+            
         </div>
     </form>
 

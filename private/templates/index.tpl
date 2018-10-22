@@ -1,14 +1,10 @@
-{if isset($header)}
 {$header}
-{/if}
+{$navbar}
 {if isset($logged) && $logged == false}
     {$content}
 {/if}
 {if isset($logged) && $logged == true}
-{$navbar}
 {$menu}
 {$content}
 {/if}
-{if isset($header)}
 {$footer}
-{/if}

@@ -241,8 +241,8 @@ class Main
             $ee->bindValue(":news_id", $this->uri[2]);
             $ee->execute();
             $this->smarty->assign("update_success", true);
-            header('Content-Type: application/json; charset=utf8');
-            echo json_encode(true);
+            //header('Content-Type: application/json; charset=utf8');
+            //echo json_encode(true);
             exit();
         } elseif (!isset($_POST['edit_news_title']) || !isset($_POST['edit_news_content'])) {
             $this->smarty->assign("noTitleOrContent", "Wprowadź poprawnie tytuł lub zawartość newsa");
@@ -259,8 +259,8 @@ class Main
         $de->bindValue(":news_id", $this->uri[2]);
         $de->execute();
         $something = true;
-        header('Content-Type: application/json; charset=utf8');
-        echo json_encode($something);
+        //header('Content-Type: application/json; charset=utf8');
+        //echo json_encode($something);
         exit();
     }
 

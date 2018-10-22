@@ -22,7 +22,6 @@ $(function() {
     })
 
 });
-attachHandlers();
 
 function attachHandlers()
 {
@@ -50,8 +49,9 @@ function mainPage()
     })
 }
 
-function allEntries(e)
+function allEntries(event)
 {
+    event.preventDefault();
     $.ajax({
         url: "/entries"
     }).done(function(data) {
@@ -66,14 +66,16 @@ function allEntries(e)
     })
 }
 
-function editEntryInterface()
+function editEntryInterface(event)
 {
+    event.preventDefault();
     $.ajax({
         url: "/edit_entry_i/"+this.dataset.editid
     }).done(function(data) {
         console.log("interfejs edycji");
         $(".jscontent").html(data);
         $("#editentrybutton").click(editEntryQuery);
+        $("#ee_abort").click(allEntries);
     }).fail(function(e) {
         console.log(e);
     })
@@ -105,17 +107,20 @@ function deleteEntry(event)
 {
     var delete_entry_id = this.dataset.deleteid;
     var n = this.dataset.n;
-    $.ajax({
-        type: 'POST',
-        url: "/delete_entry/"+delete_entry_id
-    }).done(function() {
-        window.alert("Usunales wpis");
-        $("#"+n).remove();
-        console.log("usunelo wpis");
-    }).fail(function(e) {
-        console.log(e);
-        window.alert("Cos poszlo nie tak");
-    })
+    if (window.confirm("Na pewno chcesz usunac wpis?")) {
+        $.ajax({
+            type: 'POST',
+            url: "/delete_entry/"+delete_entry_id
+        }).done(function() {
+            window.alert("Usunales wpis");
+            $("#"+n).remove();
+            console.log("usunelo wpis");
+        }).fail(function(e) {
+            console.log(e);
+            window.alert("Cos poszlo nie tak");
+        })
+    }
+    console.log('kupa');
 }
 
 function createEntryInterface(e)
@@ -125,7 +130,7 @@ function createEntryInterface(e)
     }).done(function(data) {
         $(".jscontent").html(data);
         $("#NewEntry").submit(createEntryQuery);
-
+        $("#ce_abort").click(allEntries);
         $(".mojemenu").removeClass("active");
         $("#createentryinterface").addClass("active");
 
@@ -163,6 +168,7 @@ function createUserInterface(e)
     }).done(function(data) {
         $(".jscontent").html(data);
         $("#CreateUser").submit(createUserQuery);
+        $("#cu_abort").click(allUsers);
 
         $(".mojemenu").removeClass("active");
         $("#createuserinterface").addClass("active");
@@ -224,6 +230,7 @@ function editUserInterface()
         console.log("interfejs edycji");
         $(".jscontent").html(data);
         $("#edituserbutton").click(editUserQuery);
+        $("#eu_abort").click(allUsers);
     }).fail(function(e) {
         console.log(e);
     })

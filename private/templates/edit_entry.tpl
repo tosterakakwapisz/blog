@@ -22,10 +22,10 @@
         </div>
         <div class="row">
             <div class="col-md-2 col-lg-2">
-                <button data-id="{$se_r.nId}" id="editentrybutton" class="btn mb-2 ml-2 jseditentryquery">Zapisz newsa</button>
-                <!-- <button id="editentryquery" data-buttonid="{$se_r.nId}" type="submit" class="btn mb-2 ml-2">Zapisz newsa</button> -->
-                <a href="/entries" class="text-middle pl-3">Anuluj</a>
+                <button data-id="{$se_r.nId}" type="submit" id="editentrybutton" class="btn btn-outline-primary mb-2 ml-2 jseditentryquery">Zapisz newsa</button>
+                <button id="ee_abort" class="btn btn-outline-primary text-middle pl-3">Anuluj</button>
             </div>
         </div>
     </form>
+
 </div>
