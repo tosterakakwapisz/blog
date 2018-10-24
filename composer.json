@@ -6,7 +6,7 @@
         "components/jquery": "^3.3",
         "heimrichhannot/popper.js": "^1.12",
         "smarty/smarty": "^3.1",
-        "components/font-awesome": "^4.7.0"
+        "components/font-awesome": "^5.0.6"
     },
     "scripts": {
         "post-install-cmd": [
@@ -17,7 +17,7 @@
             "cp -a vendor/components/jquery/jquery.js public/js/",
             "cp -a vendor/twbs/bootstrap/js/dist/popover.js public/js/",
             "cp -a vendor/twbs/bootstrap/js/dist/popover.js.map public/js/",
-            "cp -a vendor/components/font-awesome/css/fontawesome.min.css public/css/"
+            "cp -a vendor/components/font-awesome/ public/"
         ]
     }
 }

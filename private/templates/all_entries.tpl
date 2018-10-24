@@ -25,8 +25,8 @@
                         <td>{$r.n_Date}</td>
                         {if isset($user_Type) && $user_Type <= 2}
                             <td>
-                                <button data-editid="{$r.nId}" class="btn btn-outline-primary mr-2 jseditentry">Edytuj</button>
-                                <button data-deleteid="{$r.nId}" data-n="{$n}" class="btn btn-outline-primary jsdeleteentry">Usun</button>
+                                <button data-editid="{$r.nId}" class="btn btn-outline-primary mr-2 jseditentry"><i class="fas fa-edit"></i></button>
+                                <button data-deleteid="{$r.nId}" data-n="{$n}" class="btn btn-outline-primary jsdeleteentry"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         {/if}
                     </tr>
@@ -35,6 +35,4 @@
             {* //end foreach *}
         </tbody>
     </table>
-    <i class="fa fa-pencil-square-o"></i>
-
 </div>

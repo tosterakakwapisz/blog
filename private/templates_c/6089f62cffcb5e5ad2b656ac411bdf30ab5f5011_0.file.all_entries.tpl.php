@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-24 12:48:38
+/* Smarty version 3.1.33, created on 2018-10-24 16:00:16
   from '/var/www/html/blog/private/templates/all_entries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd04e06526263_26300143',
+  'unifunc' => 'content_5bd07af0dc28e7_17644847',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6089f62cffcb5e5ad2b656ac411bdf30ab5f5011' => 
     array (
       0 => '/var/www/html/blog/private/templates/all_entries.tpl',
-      1 => 1540378115,
+      1 => 1540389613,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd04e06526263_26300143 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd07af0dc28e7_17644847 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container-fluid">
     <table class="table table-hover">
         <thead>
@@ -59,10 +59,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                         <?php if (isset($_smarty_tpl->tpl_vars['user_Type']->value) && $_smarty_tpl->tpl_vars['user_Type']->value <= 2) {?>
                             <td>
                                 <button data-editid="<?php echo $_smarty_tpl->tpl_vars['r']->value['nId'];?>
-" class="btn btn-outline-primary mr-2 jseditentry">Edytuj</button>
+" class="btn btn-outline-primary mr-2 jseditentry"><i class="fas fa-edit"></i></button>
                                 <button data-deleteid="<?php echo $_smarty_tpl->tpl_vars['r']->value['nId'];?>
 " data-n="<?php echo $_smarty_tpl->tpl_vars['n']->value;?>
-" class="btn btn-outline-primary jsdeleteentry">Usun</button>
+" class="btn btn-outline-primary jsdeleteentry"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         <?php }?>
                     </tr>
@@ -73,8 +73,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <?php }?>
                     </tbody>
     </table>
-    <i class="fa fa-pencil-square-o"></i>
-
 </div>
 <?php }
 }

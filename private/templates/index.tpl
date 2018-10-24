@@ -1,6 +1,5 @@
-{if isset($header) && isset($navbar)}
+{if isset($header)}
 {$header}
-{$navbar}
 {/if}
 {if isset($logged) && $logged == false}
     {$content}

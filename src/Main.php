@@ -16,12 +16,10 @@ class Main
         $menu = $this->smarty->fetch("menu.tpl");
         $header = $this->smarty->fetch("header.tpl");
         $footer = $this->smarty->fetch("footer.tpl");
-        $navbar = $this->smarty->fetch("navbar.tpl");
         $this->smarty->assign("content", $this->content);
         $this->smarty->assign("menu", $menu);
         $this->smarty->assign("header", $header);
         $this->smarty->assign("footer", $footer);
-        $this->smarty->assign("navbar", $navbar);
         $this->smarty->display("index.tpl");
     }
 
@@ -182,10 +180,8 @@ class Main
             $_SESSION['nickname'] = $pass_check_r['u_Nickname'];
             $content = $this->smarty->fetch("main_page.tpl");
             $menu = $this->smarty->fetch("menu.tpl");
-            $navbar = $this->smarty->fetch("navbar.tpl");
             $this->smarty->assign("content", $content);
             $this->smarty->assign("menu", $menu);
-            $this->smarty->assign("navbar", $navbar);
             $this->smarty->display("index.tpl");
             exit();
         } else {
@@ -342,7 +338,6 @@ class Main
         unset($nick_name);
         session_unset();
         session_destroy();
-        //$this->smarty->clearAssign(array('content','menu','navbar'));
         $this->smarty->assign("logged", false);
         $this->smarty->assign("content", $this->smarty->fetch("login.tpl"));
         $this->smarty->display("index.tpl");
