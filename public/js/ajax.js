@@ -1,30 +1,10 @@
 $(function() {
     attachHandlers();
-    $("#Login").submit(function(event) {
-        event.preventDefault();
-        var login = $("#InputLogin").val();
-        var passwd = $("#InputPassword").val();
-        $.ajax({
-            type: 'POST',
-            url: "/login",
-            data: $(this).serialize()
-        }).done(function(data) {
-            if (data!=="") {
-                $("#maindiv").html(data);
-                attachHandlers();
-                $("#mainpagenav").addClass("active");
-            } else {
-                $("#InvalidPasswd").html("Invalid login or password");
-            }
-        }).fail(function(e) {
-            console.log(e);
-        });
-    })
-
 });
 
 function attachHandlers()
 {
+    $("#Login").submit(login);
     $("#mainpagenav").click(mainPage);
     $("#allentriesnav").click(allEntries);
     $("#createentryinterface").click(createEntryInterface);
@@ -33,6 +13,27 @@ function attachHandlers()
     $("#logout").click(logout);
 }
 
+function login(event)
+{
+    event.preventDefault();
+    var login = $("#InputLogin").val();
+    var passwd = $("#InputPassword").val();
+    $.ajax({
+        type: 'POST',
+        url: "/login",
+        data: $(this).serialize()
+    }).done(function(data) {
+        if (data!=="") {
+            $("#maindiv").html(data);
+            attachHandlers();
+            $("#mainpagenav").addClass("active");
+        } else {
+            $("#InvalidPasswd").html("Invalid login or password");
+        }
+    }).fail(function(e) {
+        console.log(e);
+    });
+}
 function mainPage()
 {
     $.ajax({
@@ -287,6 +288,7 @@ function logout()
         url: "/logout"
     }).done(function(data) {
         $("#maindiv").html(data);
+        attachHandlers();
         console.log("wylogowano");
     }).fail(function(e) {
         console.log(e);

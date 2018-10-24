@@ -71,7 +71,10 @@ class Main
         $hashed_pass = $db_hash->fetchAll();
         if (isset($hashed_pass[0]['u_Password'])) {
             $hash = $hashed_pass[0]['u_Password'];
-            return explode("$", $hash)[3];
+            //print_r($hash);
+            $zmienna = explode("$", $hash);
+            //print_r($zmienna);
+            return $zmienna[3];
         } else {
             return null;
         }
@@ -339,7 +342,7 @@ class Main
         unset($nick_name);
         session_unset();
         session_destroy();
-        $this->smarty->clearAssign(array('content','menu','navbar','logged'));
+        $this->smarty->clearAssign(array('content','menu','navbar'));
         $this->smarty->assign("logged", false);
         $this->smarty->assign("content", $this->smarty->fetch("login.tpl"));
         $this->smarty->display("index.tpl");
