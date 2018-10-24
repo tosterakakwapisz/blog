@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-22 14:47:19
+/* Smarty version 3.1.33, created on 2018-10-24 12:09:35
   from '/var/www/html/blog/private/templates/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bcdc6d7807a03_47515337',
+  'unifunc' => 'content_5bd044dfc24c87_30519641',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '444b76d7b97bc7b666920f787f339f9083655527' => 
     array (
       0 => '/var/www/html/blog/private/templates/header.tpl',
-      1 => 1540212432,
+      1 => 1540375164,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bcdc6d7807a03_47515337 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd044dfc24c87_30519641 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Blog:8001</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/toster.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">

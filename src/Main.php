@@ -342,7 +342,7 @@ class Main
         unset($nick_name);
         session_unset();
         session_destroy();
-        $this->smarty->clearAssign(array('content','menu','navbar'));
+        //$this->smarty->clearAssign(array('content','menu','navbar'));
         $this->smarty->assign("logged", false);
         $this->smarty->assign("content", $this->smarty->fetch("login.tpl"));
         $this->smarty->display("index.tpl");
