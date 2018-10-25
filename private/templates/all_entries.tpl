@@ -1,14 +1,13 @@
 <div class="container-fluid">
     <table class="table table-hover">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">Content</th>
                 <th scope="col">Author</th>
                 <th scope="col">AddDate</th>
                 {if isset($user_Type) && $user_Type <= 2}
-                    <th scope="col" class="col-2">Actions</th>
+                    <th scope="col">Actions</th>
                 {/if}
             </tr>
         </thead>
@@ -20,13 +19,12 @@
                     <tr id="{$n}">
                         <th scope="row">{$n}</th>
                         <td>{$r.n_Title}</td>
-                        <td>{$r.n_Content}</td>
                         <td>{$r.n_AuthorNickname}</td>
                         <td>{$r.n_Date}</td>
                         {if isset($user_Type) && $user_Type <= 2}
                             <td>
-                                <button data-editid="{$r.nId}" class="btn btn-outline-primary mr-2 jseditentry"><i class="fas fa-edit"></i></button>
-                                <button data-deleteid="{$r.nId}" data-n="{$n}" class="btn btn-outline-primary jsdeleteentry"><i class="fas fa-trash-alt"></i></button>
+                                <button data-editid="{$r.nId}" class="btn btn-outline-dark jseditentry"><i class="fas fa-edit"></i></button>
+                                <button data-deleteid="{$r.nId}" data-n="{$n}" class="btn btn-outline-dark jsdeleteentry"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         {/if}
                     </tr>

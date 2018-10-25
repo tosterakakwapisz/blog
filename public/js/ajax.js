@@ -1,6 +1,32 @@
 $(function() {
     attachHandlers();
+    /*
+    console.log($("#NewsContent"));
+    $("#NewsContent").change(function() {
+        console.log("kupa123");
+    })
+    */
 });
+
+function expandTextarea()
+{
+    if ($("#EditNewsContent").rows < 20 ) {
+        $('#EditNewsContent').on( 'change keyup keydown paste cut', 'textarea', function (){
+            $(this).height(0).height(this.scrollHeight);
+        }).find( 'textarea' ).change();
+    }
+    if ($("#NewsContent").rows < 20) {
+        $('#NewsContent').on( 'change keyup keydown paste cut', 'textarea', function (){
+            $(this).height(0).height(this.scrollHeight);
+        }).find( 'textarea' ).change();
+    }
+
+    /*
+    $("#EditNewsContent").height( $("#EditNewsContent")[0].scrollHeight);
+    console.log("funkcja dziala");
+    console.log($("#EditNewsContent"));
+    */
+}
 
 function attachHandlers()
 {
@@ -11,6 +37,7 @@ function attachHandlers()
     $("#createuserinterface").click(createUserInterface);
     $("#displayusers").click(allUsers);
     $("#logout").click(logout);
+
 }
 
 function login(event)
@@ -75,6 +102,11 @@ function editEntryInterface(event)
     }).done(function(data) {
         console.log("interfejs edycji");
         $(".jscontent").html(data);
+        /*
+        $('#EditNewsContent').on( 'change keyup keydown paste cut', 'textarea', function (){
+            $(this).height(0).height(this.scrollHeight);
+        }).find( 'textarea' ).change();
+        */
         $("#editentrybutton").click(editEntryQuery);
         $("#ee_abort").click(allEntries);
     }).fail(function(e) {
@@ -97,8 +129,9 @@ function editEntryQuery(event)
         }
     }).done(function(data) {
         window.alert("Wpis został zmieniony");
-        $(".jscontent").html(allEntries());
         console.log("wpis zmieniony");
+        console.log(data);
+        $(".jscontent").html(allEntries());
     }).fail(function(e) {
         console.log(e);
     })
@@ -108,20 +141,17 @@ function deleteEntry(event)
 {
     var delete_entry_id = this.dataset.deleteid;
     var n = this.dataset.n;
-    if (window.confirm("Na pewno chcesz usunac wpis?")) {
-        $.ajax({
-            type: 'POST',
-            url: "/delete_entry/"+delete_entry_id
-        }).done(function() {
-            window.alert("Usunales wpis");
-            $("#"+n).remove();
-            console.log("usunelo wpis");
-        }).fail(function(e) {
-            console.log(e);
-            window.alert("Cos poszlo nie tak");
-        })
-    }
-    console.log('kupa');
+    $.ajax({
+        type: 'POST',
+        url: "/delete_entry/"+delete_entry_id
+    }).done(function() {
+        window.alert("Usunales wpis");
+        console.log("usunelo wpis");
+        $(".jscontent").html(allEntries(event));
+    }).fail(function(e) {
+        console.log(e);
+        window.alert("Cos poszlo nie tak");
+    })
 }
 
 function createEntryInterface(e)
@@ -134,7 +164,11 @@ function createEntryInterface(e)
         $("#ce_abort").click(allEntries);
         $(".mojemenu").removeClass("active");
         $("#createentryinterface").addClass("active");
-
+        /*
+        $('#NewsContent').on( 'change keyup keydown paste cut', 'textarea', function (){
+            $(this).height(0).height(this.scrollHeight);
+        }).find( 'textarea' ).change();
+        */
         console.log("interfejs tworzenia wpisu");
     }).fail(function(e) {
         console.log(e);
@@ -170,10 +204,8 @@ function createUserInterface(e)
         $(".jscontent").html(data);
         $("#CreateUser").submit(createUserQuery);
         $("#cu_abort").click(allUsers);
-
         $(".mojemenu").removeClass("active");
         $("#createuserinterface").addClass("active");
-
         console.log("interfejs tworzenia uzytkownika");
     }).fail(function(e) {
         console.log(e);
@@ -273,9 +305,10 @@ function deleteUser()
         type: 'POST',
         url: "/delete_user/"+delete_user_id
     }).done(function() {
-        window.alert("Usunales usera o id: "+a);
-        $("#"+a).remove();
+        window.alert("Usunales usera");
+        //$("#"+a).remove();
         console.log("user deleted");
+        $(".jscontent").html(allUsers());
     }).fail(function(e) {
         console.log(e);
         console.log("cos poszlo nie tak");

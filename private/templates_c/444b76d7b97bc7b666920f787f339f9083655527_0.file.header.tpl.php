@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-24 15:45:06
+/* Smarty version 3.1.33, created on 2018-10-25 10:40:20
   from '/var/www/html/blog/private/templates/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd07762daa935_20910910',
+  'unifunc' => 'content_5bd18174c1cc07_80653522',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '444b76d7b97bc7b666920f787f339f9083655527' => 
     array (
       0 => '/var/www/html/blog/private/templates/header.tpl',
-      1 => 1540388699,
+      1 => 1540456804,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd07762daa935_20910910 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd18174c1cc07_80653522 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +34,7 @@ function content_5bd07762daa935_20910910 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="description" content="">
     <meta name="author" content="">
     </head>
-<body>
+<body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center text-white mx-0 p-4">
         <a class="navbar-brand pointer">TosterBlog</a>
     </nav>

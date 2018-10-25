@@ -47,8 +47,8 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-3 text-left">
-                <button type="submit" class="btn btn-outline-primary m-1">Utworz uzytkownika</button>
-                <button class="btn btn-outline-primary text-center m-1" id="cu_abort">Anuluj</button>
+                <button type="submit" class="btn btn-outline-dark m-1">Utworz uzytkownika</button>
+                <button class="btn btn-outline-dark text-center m-1" id="cu_abort">Anuluj</button>
             </div>
         </div>
     </form>

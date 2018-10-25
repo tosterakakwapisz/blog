@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-24 16:00:16
+/* Smarty version 3.1.33, created on 2018-10-25 10:21:46
   from '/var/www/html/blog/private/templates/all_entries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd07af0dc28e7_17644847',
+  'unifunc' => 'content_5bd17d1a292136_54910213',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6089f62cffcb5e5ad2b656ac411bdf30ab5f5011' => 
     array (
       0 => '/var/www/html/blog/private/templates/all_entries.tpl',
-      1 => 1540389613,
+      1 => 1540455545,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd07af0dc28e7_17644847 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd17d1a292136_54910213 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container-fluid">
     <table class="table table-hover">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">Content</th>
                 <th scope="col">Author</th>
                 <th scope="col">AddDate</th>
                 <?php if (isset($_smarty_tpl->tpl_vars['user_Type']->value) && $_smarty_tpl->tpl_vars['user_Type']->value <= 2) {?>
-                    <th scope="col" class="col-2">Actions</th>
+                    <th scope="col">Actions</th>
                 <?php }?>
             </tr>
         </thead>
@@ -50,8 +49,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
 </th>
                         <td><?php echo $_smarty_tpl->tpl_vars['r']->value['n_Title'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['r']->value['n_Content'];?>
-</td>
                         <td><?php echo $_smarty_tpl->tpl_vars['r']->value['n_AuthorNickname'];?>
 </td>
                         <td><?php echo $_smarty_tpl->tpl_vars['r']->value['n_Date'];?>
@@ -59,10 +56,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
                         <?php if (isset($_smarty_tpl->tpl_vars['user_Type']->value) && $_smarty_tpl->tpl_vars['user_Type']->value <= 2) {?>
                             <td>
                                 <button data-editid="<?php echo $_smarty_tpl->tpl_vars['r']->value['nId'];?>
-" class="btn btn-outline-primary mr-2 jseditentry"><i class="fas fa-edit"></i></button>
+" class="btn btn-outline-dark jseditentry"><i class="fas fa-edit"></i></button>
                                 <button data-deleteid="<?php echo $_smarty_tpl->tpl_vars['r']->value['nId'];?>
 " data-n="<?php echo $_smarty_tpl->tpl_vars['n']->value;?>
-" class="btn btn-outline-primary jsdeleteentry"><i class="fas fa-trash-alt"></i></button>
+" class="btn btn-outline-dark jsdeleteentry"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         <?php }?>
                     </tr>

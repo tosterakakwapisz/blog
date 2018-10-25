@@ -194,7 +194,7 @@ class Main
     public function displayAllEntries()
     {
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
-        $dae = $this->dbh->prepare("SELECT * FROM News ORDER BY n_Date DESC");
+        $dae = $this->dbh->prepare("SELECT nId, n_Title, n_AuthorNickname, n_Date FROM News ORDER BY n_Date DESC");
         $dae->execute();
         $dae_r = $dae->fetchAll();
         $this->smarty->assign("dae_r", $dae_r);
@@ -329,8 +329,8 @@ class Main
             $du = $this->dbh->prepare("DELETE FROM Users WHERE uId = :user_id;");
             $du->bindValue(":user_id", $this->uri[2]);
             $du->execute();
-            header("Location: /users");
-            exit();
+            //header("Location: /users");
+            //exit();
     }
 
     public function logout()

@@ -22,10 +22,10 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-lg-3">
-                <button type="submit" class="btn btn-outline-primary">Zapisz</button>
-                <button id="ce_abort" class="btn btn-outline-primary">Anuluj</button>
+                <button type="submit" class="btn btn-outline-dark">Zapisz</button>
+                <button id="ce_abort" class="btn btn-outline-dark">Anuluj</button>
             </div>
-            
+
         </div>
     </form>
 

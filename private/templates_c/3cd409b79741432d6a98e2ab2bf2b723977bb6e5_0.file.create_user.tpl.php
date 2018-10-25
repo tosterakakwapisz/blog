@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-22 14:39:41
+/* Smarty version 3.1.33, created on 2018-10-25 10:21:49
   from '/var/www/html/blog/private/templates/create_user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bcdc50dc53ed6_35127781',
+  'unifunc' => 'content_5bd17d1d47ce21_17885775',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3cd409b79741432d6a98e2ab2bf2b723977bb6e5' => 
     array (
       0 => '/var/www/html/blog/private/templates/create_user.tpl',
-      1 => 1540211046,
+      1 => 1540455574,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bcdc50dc53ed6_35127781 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd17d1d47ce21_17885775 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="col-md-9 col-lg-9">
     <form action="/create_user" id="CreateUser" method="POST">
         <div class="row">
@@ -70,8 +70,8 @@ function content_5bcdc50dc53ed6_35127781 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-3 text-left">
-                <button type="submit" class="btn btn-outline-primary m-1">Utworz uzytkownika</button>
-                <button class="btn btn-outline-primary text-center m-1" id="cu_abort">Anuluj</button>
+                <button type="submit" class="btn btn-outline-dark m-1">Utworz uzytkownika</button>
+                <button class="btn btn-outline-dark text-center m-1" id="cu_abort">Anuluj</button>
             </div>
         </div>
     </form>

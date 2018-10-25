@@ -38,9 +38,9 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 text-left py-2">
-                <button type="submit" data-edituserid="{$su_r.uId}" id="edituserbutton" class="btn btn-outline-primary">Zapisz zmiany</button>
-                <button type="reset" class="btn btn-outline-primary">Resetuj</button>
-                <button class="btn btn-outline-primary text-middle px-3" id="eu_abort">Anuluj</button>
+                <button type="submit" data-edituserid="{$su_r.uId}" id="edituserbutton" class="btn btn-outline-dark">Zapisz zmiany</button>
+                <button type="reset" class="btn btn-outline-dark">Resetuj</button>
+                <button class="btn btn-outline-dark text-middle px-3" id="eu_abort">Anuluj</button>
             </div>
         </div>
     </form>
