@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <table class="table table-hover">
+    <table class="table table-hover table-responsive-sm">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -7,7 +7,7 @@
                 <th scope="col">Login</th>
                 <th scope="col">Type</th>
                 {if isset($user_Type) && $user_Type <= 2}
-                    <th scope="col" class="col-2">Actions</th>
+                    <th scope="col">Actions</th>
                 {/if}
             </tr>
         </thead>

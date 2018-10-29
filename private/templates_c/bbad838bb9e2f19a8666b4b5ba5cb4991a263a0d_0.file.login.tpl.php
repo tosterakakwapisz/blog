@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-25 11:26:14
+/* Smarty version 3.1.33, created on 2018-10-29 08:45:39
   from '/var/www/html/blog/private/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd18c368f6dc8_73811651',
+  'unifunc' => 'content_5bd6baa357e4a0_83245540',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd18c368f6dc8_73811651 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd6baa357e4a0_83245540 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="col-md-2 offset-md-5">
     <form class="form-signin mt-5" id="Login" method="POST" action="./">
         <label for="inputLogin" class="sr-only">Login</label>

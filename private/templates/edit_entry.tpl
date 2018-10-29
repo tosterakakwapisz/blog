@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-10 col-lg-10">
-                <textarea class="form-control" id="EditNewsContent" name="edit_news_content" rows="20" required placeholder="Content">{$se_r.n_Content}</textarea>
+                <textarea class="form-control text-justify" id="EditNewsContent" name="edit_news_content" rows="20" required placeholder="Content">{$se_r.n_Content}</textarea>
             </div>
         </div>
         <div class="row">
@@ -27,5 +27,4 @@
             </div>
         </div>
     </form>
-
 </div>

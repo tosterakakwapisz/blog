@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-25 10:21:46
+/* Smarty version 3.1.33, created on 2018-10-29 10:30:55
   from '/var/www/html/blog/private/templates/all_entries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd17d1a292136_54910213',
+  'unifunc' => 'content_5bd6d34ff2f4e6_04509963',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6089f62cffcb5e5ad2b656ac411bdf30ab5f5011' => 
     array (
       0 => '/var/www/html/blog/private/templates/all_entries.tpl',
-      1 => 1540455545,
+      1 => 1540805350,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd17d1a292136_54910213 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd6d34ff2f4e6_04509963 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container-fluid">
-    <table class="table table-hover">
+    <table class="table table-hover table-responsive-sm">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>

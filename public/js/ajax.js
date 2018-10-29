@@ -1,11 +1,5 @@
 $(function() {
     attachHandlers();
-    /*
-    console.log($("#NewsContent"));
-    $("#NewsContent").change(function() {
-        console.log("kupa123");
-    })
-    */
 });
 
 function expandTextarea()
@@ -52,6 +46,7 @@ function login(event)
     }).done(function(data) {
         if (data!=="") {
             $("#maindiv").html(data);
+            mainPage();
             attachHandlers();
             $("#mainpagenav").addClass("active");
         } else {
@@ -66,11 +61,9 @@ function mainPage()
     $.ajax({
         url: "/root"
     }).done(function(data) {
-        $(".jscontent").html(data);
-
-        $(".mojemenu").removeClass("active");
-        $("#mainpagenav").addClass("active");
-
+        $("#jscontent").html(data);
+        $(".mojemenu").removeClass("active text-white");
+        $("#mainpagenav").addClass("active text-white");
         console.log("strona glowna");
     }).fail(function(e) {
         console.log(e);
@@ -83,11 +76,11 @@ function allEntries(event)
     $.ajax({
         url: "/entries"
     }).done(function(data) {
-        $(".jscontent").html(data);
+        $("#jscontent").html(data);
         $(".jseditentry").click(editEntryInterface);
         $(".jsdeleteentry").click(deleteEntry);
-        $(".mojemenu").removeClass("active");
-        $("#allentriesnav").addClass("active");
+        $(".mojemenu").removeClass("active text-white");
+        $("#allentriesnav").addClass("active text-white");
         console.log("wszystkie wpisy");
     }).fail(function(e) {
         console.log(e);
@@ -101,7 +94,7 @@ function editEntryInterface(event)
         url: "/edit_entry_i/"+this.dataset.editid
     }).done(function(data) {
         console.log("interfejs edycji");
-        $(".jscontent").html(data);
+        $("#jscontent").html(data);
         /*
         $('#EditNewsContent').on( 'change keyup keydown paste cut', 'textarea', function (){
             $(this).height(0).height(this.scrollHeight);
@@ -131,7 +124,7 @@ function editEntryQuery(event)
         window.alert("Wpis został zmieniony");
         console.log("wpis zmieniony");
         console.log(data);
-        $(".jscontent").html(allEntries());
+        $("#jscontent").html(allEntries());
     }).fail(function(e) {
         console.log(e);
     })
@@ -147,7 +140,7 @@ function deleteEntry(event)
     }).done(function() {
         window.alert("Usunales wpis");
         console.log("usunelo wpis");
-        $(".jscontent").html(allEntries(event));
+        $("#jscontent").html(allEntries(event));
     }).fail(function(e) {
         console.log(e);
         window.alert("Cos poszlo nie tak");
@@ -159,11 +152,11 @@ function createEntryInterface(e)
     $.ajax({
         url: "/create_entry_i"
     }).done(function(data) {
-        $(".jscontent").html(data);
+        $("#jscontent").html(data);
         $("#NewEntry").submit(createEntryQuery);
         $("#ce_abort").click(allEntries);
-        $(".mojemenu").removeClass("active");
-        $("#createentryinterface").addClass("active");
+        $(".mojemenu").removeClass("active text-white");
+        $("#createentryinterface").addClass("active text-white");
         /*
         $('#NewsContent').on( 'change keyup keydown paste cut', 'textarea', function (){
             $(this).height(0).height(this.scrollHeight);
@@ -201,11 +194,11 @@ function createUserInterface(e)
     $.ajax({
         url: "/create_user_i"
     }).done(function(data) {
-        $(".jscontent").html(data);
+        $("#jscontent").html(data);
         $("#CreateUser").submit(createUserQuery);
         $("#cu_abort").click(allUsers);
-        $(".mojemenu").removeClass("active");
-        $("#createuserinterface").addClass("active");
+        $(".mojemenu").removeClass("active text-white");
+        $("#createuserinterface").addClass("active text-white");
         console.log("interfejs tworzenia uzytkownika");
     }).fail(function(e) {
         console.log(e);
@@ -242,12 +235,12 @@ function allUsers()
     $.ajax({
         url: "/users"
     }).done(function(data) {
-        $(".jscontent").html(data);
+        $("#jscontent").html(data);
         $(".jsedituser").click(editUserInterface);
         $(".jsdeleteuser").click(deleteUser);
 
-        $(".mojemenu").removeClass("active");
-        $("#displayusers").addClass("active");
+        $(".mojemenu").removeClass("active text-white");
+        $("#displayusers").addClass("active text-white");
 
         console.log("all users");
     }).fail(function(e) {
@@ -261,7 +254,7 @@ function editUserInterface()
         url: "/edit_user_i/"+this.dataset.editid
     }).done(function(data) {
         console.log("interfejs edycji");
-        $(".jscontent").html(data);
+        $("#jscontent").html(data);
         $("#edituserbutton").click(editUserQuery);
         $("#eu_abort").click(allUsers);
     }).fail(function(e) {
@@ -288,7 +281,7 @@ function editUserQuery(event)
         }
     }).done(function(data) {
         window.alert("Uzytkownik został zmieniony");
-        $(".jscontent").html(allUsers());
+        $("#jscontent").html(allUsers());
         console.log("user zmieniony");
     }).fail(function(data) {
         console.log(data);
@@ -308,7 +301,7 @@ function deleteUser()
         window.alert("Usunales usera");
         //$("#"+a).remove();
         console.log("user deleted");
-        $(".jscontent").html(allUsers());
+        $("#jscontent").html(allUsers());
     }).fail(function(e) {
         console.log(e);
         console.log("cos poszlo nie tak");

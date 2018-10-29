@@ -6,7 +6,9 @@
 {/if}
 {if isset($logged) && $logged == true}
 {$menu}
+{if isset($content)}
 {$content}
+{/if}
 {/if}
 {if isset($footer)}
 {$footer}

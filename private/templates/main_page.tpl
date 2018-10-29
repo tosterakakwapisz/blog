@@ -1,3 +1,3 @@
-    <div class="col-md-10 col-sm-10 jscontent">
+    <div class="col-md-12 col-sm-12">
         Main page ;)
     </div>

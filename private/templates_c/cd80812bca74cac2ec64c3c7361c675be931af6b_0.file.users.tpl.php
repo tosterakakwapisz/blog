@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2018-10-25 10:21:50
+/* Smarty version 3.1.33, created on 2018-10-29 10:30:56
   from '/var/www/html/blog/private/templates/users.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5bd17d1e644fe4_47923732',
+  'unifunc' => 'content_5bd6d350bb99b5_43303286',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cd80812bca74cac2ec64c3c7361c675be931af6b' => 
     array (
       0 => '/var/www/html/blog/private/templates/users.tpl',
-      1 => 1540455700,
+      1 => 1540805453,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5bd17d1e644fe4_47923732 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5bd6d350bb99b5_43303286 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container-fluid">
-    <table class="table table-hover">
+    <table class="table table-hover table-responsive-sm">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -30,7 +30,7 @@ function content_5bd17d1e644fe4_47923732 (Smarty_Internal_Template $_smarty_tpl)
                 <th scope="col">Login</th>
                 <th scope="col">Type</th>
                 <?php if (isset($_smarty_tpl->tpl_vars['user_Type']->value) && $_smarty_tpl->tpl_vars['user_Type']->value <= 2) {?>
-                    <th scope="col" class="col-2">Actions</th>
+                    <th scope="col">Actions</th>
                 <?php }?>
             </tr>
         </thead>

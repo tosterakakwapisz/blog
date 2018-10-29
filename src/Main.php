@@ -87,7 +87,7 @@ class Main
     {
         if ($this->uri[1] == "") {
             $this->smarty->assign("user_Type", $_SESSION['user_type']);
-            $this->content = $this->smarty->fetch("main_page.tpl");
+            $this->content = $this->smarty->display("main_page.tpl");
         } elseif ($this->uri[1] == "root") {
             $this->smarty->assign("user_Type", $_SESSION['user_type']);
             $this->content = $this->smarty->display("main_page.tpl");
@@ -178,9 +178,7 @@ class Main
             }
             $_SESSION['id'] = 1;
             $_SESSION['nickname'] = $pass_check_r['u_Nickname'];
-            $content = $this->smarty->fetch("main_page.tpl");
             $menu = $this->smarty->fetch("menu.tpl");
-            $this->smarty->assign("content", $content);
             $this->smarty->assign("menu", $menu);
             $this->smarty->display("index.tpl");
             exit();
