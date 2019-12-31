@@ -1,4 +1,5 @@
 <?php
+
 namespace Toster;
 
 class Main
@@ -80,7 +81,7 @@ class Main
 
     public function parse()
     {
-        $this->uri = explode("/", $_SERVER['REQUEST_URI']) ;
+        $this->uri = explode("/", $_SERVER['REQUEST_URI']);
     }
 
     public function main()
@@ -92,7 +93,7 @@ class Main
             $this->smarty->assign("user_Type", $_SESSION['user_type']);
             $this->content = $this->smarty->display("main_page.tpl");
             exit();
-        } elseif ($this->uri[1] == "entries" ) {
+        } elseif ($this->uri[1] == "entries") {
             if (isset($_SESSION['user_type'])) {
                 $this->displayAllEntries();
             }
@@ -158,11 +159,13 @@ class Main
         $password = $_POST['passwd'];
         $salt = $this->hashed($login);
         $crypted = crypt($password, '$6$rounds=500000$' . $salt);
-        $pass_check=$this->dbh->prepare("SELECT * FROM Users WHERE u_Login=:Login AND u_Password=:Crypted");
+        $pass_check = $this->dbh->prepare(
+            "SELECT * FROM Users WHERE u_Login=:Login AND u_Password=:Crypted"
+        );
         $pass_check->bindValue(":Login", $login);
         $pass_check->bindValue(":Crypted", $crypted);
         $pass_check->execute();
-        $pass_check_r=$pass_check->fetch();
+        $pass_check_r = $pass_check->fetch();
         if ($pass_check_r > 0) {
             $this->smarty->assign("logged", true);
             $found[0] = true;
@@ -192,7 +195,10 @@ class Main
     public function displayAllEntries()
     {
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
-        $dae = $this->dbh->prepare("SELECT nId, n_Title, n_AuthorNickname, n_Date FROM News ORDER BY n_Date DESC");
+        $dae = $this->dbh->prepare(
+            "SELECT nId, n_Title, n_AuthorNickname, n_Date
+            FROM News ORDER BY n_Date DESC"
+        );
         $dae->execute();
         $dae_r = $dae->fetchAll();
         $this->smarty->assign("dae_r", $dae_r);
@@ -204,7 +210,10 @@ class Main
     {
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
         if (isset($_POST['news_title']) && isset($_POST['news_content'])) {
-            $ce = $this->dbh->prepare("INSERT INTO News (nId, n_Title, n_Content, n_AuthorNickname, n_Date) VALUES (NULL, :Title, :Content, :Nick, NOW());");
+            $ce = $this->dbh->prepare(
+                "INSERT INTO News (nId, n_Title, n_Content, n_AuthorNickname, n_Date)
+                    VALUES (NULL, :Title, :Content, :Nick, NOW());"
+            );
             $ce->bindValue(":Title", $_POST['news_title']);
             $ce->bindValue(":Content", $_POST['news_content']);
             $ce->bindValue(":Nick", $_SESSION['nickname']);
@@ -212,7 +221,10 @@ class Main
             $this->content = $this->smarty->display("new_entry.tpl");
             exit();
         } elseif (!isset($_POST['news_title']) || !isset($_POST['news_content'])) {
-            $this->smarty->assign("noTitleOrContent", "Wprowadź poprawnie tytuł lub zawartość newsa");
+            $this->smarty->assign(
+                "noTitleOrContent",
+                "Wprowadź poprawnie tytuł lub zawartość newsa"
+            );
             $something = false;
         }
     }
@@ -232,7 +244,11 @@ class Main
     public function editEntryQuery()
     {
         if (isset($_POST['edit_news_title']) && isset($_POST['edit_news_content'])) {
-            $ee = $this->dbh->prepare("UPDATE News SET n_Title = :edit_title, n_Content = :edit_content, n_Date = NOW() WHERE nId = :news_id;");
+            $ee = $this->dbh->prepare(
+                "UPDATE News
+                SET n_Title = :edit_title, n_Content = :edit_content, n_Date = NOW()
+                WHERE nId = :news_id;"
+            );
             $ee->bindValue(":edit_title", $_POST['edit_news_title']);
             $ee->bindValue(":edit_content", $_POST['edit_news_content']);
             $ee->bindValue(":news_id", $this->uri[2]);
@@ -242,7 +258,10 @@ class Main
             //echo json_encode(true);
             exit();
         } elseif (!isset($_POST['edit_news_title']) || !isset($_POST['edit_news_content'])) {
-            $this->smarty->assign("noTitleOrContent", "Wprowadź poprawnie tytuł lub zawartość newsa");
+            $this->smarty->assign(
+                "noTitleOrContent",
+                "Wprowadź poprawnie tytuł lub zawartość newsa"
+            );
             $something = false;
         }
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
@@ -323,12 +342,12 @@ class Main
 
     function deleteUser()
     {
-            $this->smarty->assign("user_Type", $_SESSION['user_type']);
-            $du = $this->dbh->prepare("DELETE FROM Users WHERE uId = :user_id;");
-            $du->bindValue(":user_id", $this->uri[2]);
-            $du->execute();
-            //header("Location: /users");
-            //exit();
+        $this->smarty->assign("user_Type", $_SESSION['user_type']);
+        $du = $this->dbh->prepare("DELETE FROM Users WHERE uId = :user_id;");
+        $du->bindValue(":user_id", $this->uri[2]);
+        $du->execute();
+        //header("Location: /users");
+        //exit();
     }
 
     public function logout()
