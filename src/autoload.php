@@ -1,4 +1,5 @@
 <?php
+
 namespace Toster;
 
-require('Main.php');
+require 'Main.php';
