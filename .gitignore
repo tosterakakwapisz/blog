@@ -1,4 +1,5 @@
 vendor/
 /vendor/
 private/templates_c/
+/private/templates_c/
 private/config.php
