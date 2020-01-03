@@ -48,36 +48,6 @@ class Main
         }
     }
 
-    public function hashingPasswd($password)
-    {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 16; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        $salt = implode($pass); //turn the array into a string
-        $crypted = crypt($password, '$6$rounds=500000$' . $salt);
-        return $crypted;
-    }
-
-    public function hashed($login)
-    {
-        $db_hash = $this->dbh->prepare("SELECT u_Password FROM Users WHERE u_Login = :Login");
-        $db_hash->bindParam(":Login", $login);
-        $db_hash->execute();
-        $hashed_pass = $db_hash->fetchAll();
-        if (isset($hashed_pass[0]['u_Password'])) {
-            $hash = $hashed_pass[0]['u_Password'];
-            //print_r($hash);
-            $zmienna = explode("$", $hash);
-            //print_r($zmienna);
-            return $zmienna[3];
-        } else {
-            return null;
-        }
-    }
 
     public function parse()
     {
@@ -157,16 +127,17 @@ class Main
     {
         $login = $_POST['login'];
         $password = $_POST['passwd'];
-        $salt = $this->hashed($login);
-        $crypted = crypt($password, '$6$rounds=500000$' . $salt);
+        $options = [
+            'cost' => 12
+        ];
         $pass_check = $this->dbh->prepare(
-            "SELECT * FROM Users WHERE u_Login=:Login AND u_Password=:Crypted"
+            "SELECT * FROM Users WHERE u_Login=:Login"
         );
         $pass_check->bindValue(":Login", $login);
-        $pass_check->bindValue(":Crypted", $crypted);
         $pass_check->execute();
         $pass_check_r = $pass_check->fetch();
-        if ($pass_check_r > 0) {
+        $pwd_correct = password_verify($password, $pass_check_r['u_Password']);
+        if ((bool) $pwd_correct === true) {
             $this->smarty->assign("logged", true);
             $found[0] = true;
             if ($pass_check_r['u_UserType'] == 1) {
@@ -286,7 +257,10 @@ class Main
         if (isset($_POST['new_u_nick']) && isset($_POST['new_u_login']) && isset($_POST['new_u_passwd']) && isset($_POST['user_type'])) {
             $cu = $this->dbh->prepare("INSERT INTO Users (uId, u_Login, u_Password, u_Nickname, u_UserType) VALUES (NULL, :Login, :Password, :Nick, :Type);");
             $password = $_POST['new_u_passwd'];
-            $crypted = $this->hashingPasswd($password);
+            $options = [
+                'cost' => 12,
+            ];
+            $crypted = password_hash($password, PASSWORD_BCRYPT, $options);
             $cu->bindValue(":Login", $_POST['new_u_login']);
             $cu->bindValue(":Password", $crypted);
             $cu->bindValue(":Nick", $_POST['new_u_nick']);
@@ -326,7 +300,10 @@ class Main
         if (isset($_POST['edit_u_nickname']) && isset($_POST['edit_u_login']) && isset($_POST['edit_u_passwd']) && isset($_POST['edit_u_type'])) {
             $eu = $this->dbh->prepare("UPDATE Users SET u_Login = :login, u_Password = :crypted, u_Nickname = :nick , u_UserType = :type WHERE uId = :userid;");
             $password = $_POST['edit_u_passwd'];
-            $crypted = $this->hashingPasswd($password);
+            $options = [
+                'cost' => 12,
+            ];
+            $crypted = password_hash($password, PASSWORD_BCRYPT, $options);
             $eu->bindValue(":crypted", $crypted);
             $eu->bindValue(":login", $_POST['edit_u_login']);
             $eu->bindValue(":nick", $_POST['edit_u_nickname']);
