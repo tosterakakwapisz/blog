@@ -27,8 +27,12 @@ class Main
     public function dbConnect()
     {
         try {
-            $this->dbh = new \PDO('mysql:host=localhost;dbname=toster', "root", "");
-        } catch (PDOException $error) {
+            $this->dbh = new \PDO(
+                'mysql:host=localhost;dbname=toster',
+                "root",
+                "root"
+            );
+        } catch (\PDOException $error) {
             print "Error!: " . $error->getMessage() . "<br/>";
             die();
         }
@@ -127,9 +131,6 @@ class Main
     {
         $login = $_POST['login'];
         $password = $_POST['passwd'];
-        $options = [
-            'cost' => 12
-        ];
         $pass_check = $this->dbh->prepare(
             "SELECT * FROM Users WHERE u_Login=:Login"
         );
@@ -239,7 +240,7 @@ class Main
         $this->content = $this->smarty->fetch("all_entries.tpl");
     }
 
-    function deleteEntry()
+    public function deleteEntry()
     {
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
         $de = $this->dbh->prepare("DELETE FROM News WHERE nId = :news_id;");
@@ -317,7 +318,7 @@ class Main
         $this->content = $this->smarty->fetch("edit_user.tpl");
     }
 
-    function deleteUser()
+    public function deleteUser()
     {
         $this->smarty->assign("user_Type", $_SESSION['user_type']);
         $du = $this->dbh->prepare("DELETE FROM Users WHERE uId = :user_id;");
